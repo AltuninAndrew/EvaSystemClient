@@ -1,0 +1,61 @@
+.background {
+    display: flex;
+    background: url("./background.png") center;
+    background-size:cover;
+    width: 100%;
+    height: 99.9vh;
+    min-height: 99vh;
+}
+
+.auth_input {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.auth_enter_text{
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 2pt;
+}
+
+.auth_enter{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+}
+
+.main_text {
+    color: whitesmoke;
+    font-family: "Monotype Corsiva", Arial, serif;
+    font-size: calc(22px + 2vmin);
+    margin-top: 38pt;
+    margin-left: 40pt;
+}
+
+.auth_container{
+    background: rgba(225, 225, 225, 0.9);
+    color: white;
+    width: 23vw;
+    height: 53vh;
+    margin-top: 90pt;
+    margin-left: 40pt;
+}
+
+.auth_container_header{
+    background-color: rgb(37,40,40);
+    height: 12vh;
+    width: inherit;
+    display: inline-flex;
+}
+
+.auth_container_header_text{
+    font-family: Arial, serif;
+    font-weight: bold;
+    font-size: calc(20px + 2.1vmin);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+

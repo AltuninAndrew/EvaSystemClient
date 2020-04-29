@@ -1,0 +1,71 @@
+.main_header{
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -5pt;
+}
+
+.main_block_wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10pt;
+}
+
+.left_column_wrapper{
+  margin-top: 5pt;
+}
+
+.right_column_wrapper{
+    margin-top: 5pt;
+}
+
+.column_header{
+    text-align: center;
+    font-style: italic;
+}
+
+.user_list_block_wrapper{
+    overflow: auto;
+    height: 265pt;
+}
+
+.user_in_list_element{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-column-gap: 1pt;
+    margin-top: 10pt;
+    border: 1px solid;
+}
+
+.user_in_list_data_wrapper{
+
+}
+
+.user_in_list_avatar{
+    display: flex!important;
+    width: 10pt!important;
+    height: 10pt!important;
+}
+
+.user_in_list_full_name{
+    color: black;
+    font-size: 12pt;
+}
+
+.user_in_list_pos{
+    color: black;
+    font-size: 11pt;
+}
+
+.action_with_user{
+    margin-top: -15pt;
+    margin-left: 130pt;
+}
+
+.add_icon:active{
+    color:#1172c4;
+}
+
+.remove_icon:active{
+    color: #c41200;
+}

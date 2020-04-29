@@ -1,0 +1,44 @@
+.main_header{
+    font-family: "Segoe UI", 'Arial', sans-serif;
+    font-weight: lighter;
+    color: black;
+    font-size: calc(4pt + 1vw);
+}
+
+.fellows_list_wrapper{
+    margin-top: 5pt;
+    overflow: auto;
+    height: calc(21vw + 35vh);
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
+.fellows_list_wrapper::-webkit-scrollbar { width: 0; }
+
+.user_in_list_wrapper{
+    margin-top: 16pt;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-column-gap: 3pt;
+}
+
+.user_in_list_data_wrapper{
+    font-weight: lighter;
+    color: black;
+    margin-top: 5.5pt;
+}
+
+.avatar{
+    width: calc(5pt + 4vw) !important;
+    height: calc(5pt + 4vw)  !important;;
+}
+
+.user_in_list_full_name{
+    font-weight: normal;
+    font-size: calc(6.5pt + 0.5vw);
+}
+
+.user_in_list_position{
+    font-weight: lighter;
+    margin-top: 2pt;
+    font-size: calc(6pt + 0.5vw);
+}

@@ -1,0 +1,10 @@
+.main_header{
+    font-family: "Segoe UI", 'Arial', sans-serif;
+    font-weight: lighter;
+    color: black;
+    font-size: calc(4pt + 1vw);
+}
+
+.rating_wrapper{
+    margin-top: 30pt;
+}

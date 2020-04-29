@@ -1,0 +1,151 @@
+.background {
+    display: flex;
+    background: url("../admin_background.png");
+    background-size: cover;
+    height: 100vh;
+    min-height: 100vh;
+    background-position-y: 10pt;
+}
+
+.main_container {
+    margin-top: 17vh;
+}
+
+.left_column_header{
+    color: dimgrey;
+    background: white;
+    height: calc(22pt + 1vmin);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+    text-align: center;
+    font-size: calc(10pt + 0.7vmin);
+    border-radius: 2pt;
+    margin-bottom: 5%;
+}
+
+.right_column_header{
+    color: dimgrey;
+    background: white;
+    width: 190pt;
+    height: calc(22pt + 1vmin);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+    text-align: center;
+    font-size: calc(10pt + 0.7vmin);
+    border-radius: 2pt;
+    margin-bottom: 2.5%;
+}
+
+.user_avatar{
+    margin-left: 1pt;
+    height: 150pt;
+    width: 35%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5)
+}
+
+.user_info_wrapper{
+    margin-left: 190pt;
+    margin-top: -140pt;
+}
+
+.user_name_txt{
+    color: black;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.user_info_txt{
+    font-size: larger;
+    margin-bottom: 4pt;
+}
+
+.user_rating_txt{
+    font-size: larger;
+
+}
+
+.manager_panel_wrapper{
+    margin-top: 29pt;
+    border-style: solid;
+    border-width: 2px;
+    padding: 10pt;
+    height: 290pt;
+}
+
+.header_editing_block{
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+}
+
+.header_edit_input{
+    text-align: left;
+    font-size: 10pt;
+}
+
+.edit_data_wrapper{
+    margin-top: 13pt;
+    padding-left: 40pt;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 5pt;
+}
+
+.input_data{
+    width: 150pt;
+    height: 11pt;
+}
+
+.editing_data_element{
+    margin-bottom: 5pt;
+}
+
+.editing_personal_data{
+
+}
+
+.editing_pass_data{
+
+}
+
+.editing_pass_data button{
+    margin-top: 8pt;
+    margin-left: 6pt;
+    width: 75%;
+    color: white;
+    background: #1172c4;
+    padding: .4em 1.5em; /* отступ от текста */
+    outline: none;
+    border-radius: 5px;
+}
+
+
+.editing_data_header_txt{
+    margin-bottom: 8pt;
+}
+
+.edit_state_btn{
+    cursor: pointer;
+    margin-left: 190pt;
+    margin-top: 10pt;
+    background: transparent;
+    color: #1172c4;
+    font-size: 13px;
+    border-color: #717273;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 14px;
+    padding: 4px 20px;
+    transition: all 0.2s linear;
+    outline: none;
+
+}
+
+.edit_state_btn:hover{
+    color: white;
+    background: #1172c4;
+    border-color: white;
+    transition: all 0.2s linear;
+}
+.edit_state_btn:active{
+    color: #889798;
+}

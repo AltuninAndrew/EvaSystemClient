@@ -1,0 +1,46 @@
+.main_wrapper{
+    margin-top: 15pt;
+}
+
+.avatar{
+    display: block;
+    width: calc(50pt + 9vw) !important;
+    height: calc(50pt + 9vw)  !important;;
+    margin-bottom: 20pt;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4pt 6pt rgba(0, 0, 0, .4);
+
+}
+
+.user_data{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user_full_name{
+    font-size: calc(4pt + 1vw);
+    font-weight: normal;
+    color: black;
+}
+
+.user_position{
+    margin-top: 2pt;
+    text-align: center;
+    color: black;
+    font-size: calc(2pt + 1vw);
+    font-weight: lighter;
+}
+
+.rate_button{
+    margin-top: 30pt;
+    color: white;
+    background: #F2AE30;
+    outline: none;
+    font-size: calc(5.5pt + 1vw);
+    padding: 10pt;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 2pt;
+}

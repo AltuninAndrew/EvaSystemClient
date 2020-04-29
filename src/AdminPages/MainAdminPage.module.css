@@ -1,0 +1,56 @@
+.background {
+    display: flex;
+    background: url("./admin_background.png");
+    background-size: cover;
+    height: 100vh;
+    min-height: 100vh;
+    background-position-y: 10pt;
+}
+
+.main_container {
+    margin-top: 17vh;
+}
+
+.user_reg_element{
+    margin-top: 3%;
+}
+
+.user_reg_button {
+    font-size: 10pt;
+    margin-top: 8%;
+    color: white;
+    background: rgb(55,59,58); /* фон кнопки */
+    padding: .4em 1.5em; /* отступ от текста */
+    outline: none;
+    border-radius: 5px;
+}
+.user_reg_button:hover { background: rgb(71,75,74); } /* при наведении курсора мышки */
+.user_reg_button :active { background: rgb(85,91,90); } /* при нажатии */
+
+.user_reg_header{
+    color: dimgrey;
+    background: white;
+    height: calc(22pt + 1vmin);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+    text-align: center;
+    font-size: calc(10pt + 0.7vmin);
+    border-radius: 2pt;
+    margin-bottom: 5%;
+}
+
+.user_list_header{
+    color: dimgrey;
+    background: white;
+    width: 190pt;
+    height: calc(22pt + 1vmin);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+    text-align: center;
+    font-size: calc(10pt + 0.7vmin);
+    border-radius: 2pt;
+    margin-bottom: 2.5%;
+}
+
+.user_list_block{
+    overflow: auto;
+    height: 68vh;
+}

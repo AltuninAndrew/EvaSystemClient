@@ -1,0 +1,63 @@
+.text_userName{
+    color: black;
+    font-weight: bold;
+    font-size: 16pt;
+    margin-top: -52pt;
+    margin-left: 80pt;
+}
+
+.text_posInfo{
+    color: black;
+    font-size: 13pt;
+    margin-left: 80pt;
+    margin-top: 4pt;
+}
+
+.text_emailInfo{
+    color: black;
+    font-size: 12pt;
+    margin-top: -15.9pt;
+    margin-left: 90pt;
+}
+
+.user_avatar{
+    display: flex;
+    height: 100%;
+    width: 16%;
+}
+
+.block_info_icon{
+    margin-left: 90%;
+    margin-top: -30pt;
+}
+
+
+.info_icon{
+    font-size: 20pt!important;
+}
+
+.info_icon:active{
+    color: darkorange;
+}
+
+.link_to_profile:visited{
+    color: black;
+}
+
+.link_to_profile{
+    color: black;
+}
+
+.main_wrapper{
+    color: black;
+    border-style: solid;
+    border-width: 1px;
+    height: 55pt;
+    margin-top: 10pt;
+    width: 95%;
+}
+
+.main_wrapper:hover {
+    background: rgb(230,230,230);
+    border-style: dotted;
+} /* при наведении курсора мышки */
