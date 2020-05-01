@@ -6,5 +6,25 @@
 }
 
 .rating_wrapper{
-    margin-top: 30pt;
+    margin-top: 10pt;
+    overflow: auto;
+    height: calc(21vw + 35vh);
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
+.rating_wrapper::-webkit-scrollbar { width: 0; }
+
+.rating_element_wrapper{
+    margin-bottom: 8pt;
+}
+
+.rating_element_header{
+    margin-bottom: 5pt;
+    color: black;
+    font-weight: lighter;
+    font-size: calc(6pt + 0.5vw);
+}
+
+.general_rating{
+    margin-bottom: 30pt;
 }

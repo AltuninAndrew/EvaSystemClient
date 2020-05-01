@@ -19,10 +19,15 @@ const RatingElement = props =>{
     })(LinearProgress);
 
     return(
-        <BorderLinearProgress
-            variant="determinate"
-            value={50}
-        />
+        <div className={classes.rating_element_wrapper}>
+            <div className={classes.rating_element_header}>
+                {props.title}:
+            </div>
+            <BorderLinearProgress
+                variant="determinate"
+                value={props.value}
+            />
+        </div>
     );
 };
 
@@ -31,7 +36,45 @@ const UserStatisticsComponent = props=>{
         <div>
             <div className={classes.main_header}>Накопленный рейтинг:</div>
             <div className={classes.rating_wrapper}>
-                <RatingElement/>
+
+                <div className={classes.general_rating}>
+                    <RatingElement
+                        title="Общий"
+                        value={53}
+                    />
+                </div>
+
+
+                <RatingElement
+                    title="Продуктивность"
+                    value={78}
+                />
+
+                <RatingElement
+                    title="Ответственность"
+                    value={30}
+                />
+
+                <RatingElement
+                    title="Уверенность в завтрашнем дне"
+                    value={2}
+                />
+
+                <RatingElement
+                    title="Бла-бла"
+                    value={10}
+                />
+
+                <RatingElement
+                    title="Бла-бла"
+                    value={35}
+                />
+
+                <RatingElement
+                    title="Бла-бла"
+                    value={55}
+                />
+
             </div>
         </div>
     );
