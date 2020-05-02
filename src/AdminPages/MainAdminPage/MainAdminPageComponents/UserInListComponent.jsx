@@ -1,4 +1,4 @@
-import classes from  "./UserInListComponent.module.css"
+import classes from "./UserInListComponent.module.css"
 import React from "react";
 import InfoIcon from '@material-ui/icons/Info';
 import {NavLink} from "react-router-dom";

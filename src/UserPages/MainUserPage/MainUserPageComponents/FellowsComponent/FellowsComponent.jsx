@@ -39,28 +39,6 @@ const FellowsComponent = props => {
                     userAvatar='https://yt3.ggpht.com/a/AATXAJx4VSO85Q6WYtOXl2uR1f9YkDzDoqFVcr8e=s900-c-k-c0xffffffff-no-rj-mo'
                 />
 
-                <UserInListElement
-                    userFullName='Васильев Сергей Петрович'
-                    userPosition='Дизайнер'
-                    userAvatar='http://pm1.narvii.com/5866/45cc61eb9e3eaefdc26be045e9f9fbfdf916f45b_hq.jpg'
-                />
-                <UserInListElement
-                    userFullName='Соловьев Дмитрий Иванович'
-                    userPosition='Арт-директор'
-                    userAvatar='https://yt3.ggpht.com/a/AATXAJx4VSO85Q6WYtOXl2uR1f9YkDzDoqFVcr8e=s900-c-k-c0xffffffff-no-rj-mo'
-                />
-
-                <UserInListElement
-                    userFullName='Васильев Сергей Петрович'
-                    userPosition='Дизайнер'
-                    userAvatar='http://pm1.narvii.com/5866/45cc61eb9e3eaefdc26be045e9f9fbfdf916f45b_hq.jpg'
-                />
-                <UserInListElement
-                    userFullName='Соловьев Дмитрий Иванович'
-                    userPosition='Арт-директор'
-                    userAvatar='https://yt3.ggpht.com/a/AATXAJx4VSO85Q6WYtOXl2uR1f9YkDzDoqFVcr8e=s900-c-k-c0xffffffff-no-rj-mo'
-                />
-
 
             </div>
         </div>

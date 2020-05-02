@@ -4,8 +4,6 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import {withStyles } from '@material-ui/core/styles'
 
 
-
-
 const RatingElement = props =>{
 
     const BorderLinearProgress = withStyles({
@@ -55,25 +53,6 @@ const UserStatisticsComponent = props=>{
                     value={30}
                 />
 
-                <RatingElement
-                    title="Уверенность в завтрашнем дне"
-                    value={2}
-                />
-
-                <RatingElement
-                    title="Бла-бла"
-                    value={10}
-                />
-
-                <RatingElement
-                    title="Бла-бла"
-                    value={35}
-                />
-
-                <RatingElement
-                    title="Бла-бла"
-                    value={55}
-                />
 
             </div>
         </div>

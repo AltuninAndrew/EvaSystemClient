@@ -4,8 +4,8 @@ import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import RegUserComponent from "./AdminMainPageModules/RegUserComponent";
-import UserInListComponent from "./AdminMainPageModules/UserInListComponent";
+import RegUserComponent from "./MainAdminPageComponents/RegUserComponent";
+import UserInListComponent from "./MainAdminPageComponents/UserInListComponent";
 
 const useStyles = makeStyles((theme) => ({
     paper_1: {

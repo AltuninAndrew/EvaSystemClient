@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import Auth from './Auth/Auth'
-import MainAdminPage from './AdminPages/MainAdminPage'
+import Auth from './AuthPage/Auth'
+import MainAdminPage from './AdminPages/MainAdminPage/MainAdminPage'
 import {BrowserRouter, Route} from "react-router-dom";
 import AdminProfilePage from "./AdminPages/AdminProfilePage/AdminProfilePage";
-import UserMainPage from "./UserPages/UserMainPage"
+import MainUserPage from "./UserPages/MainUserPage/MainUserPage"
 
 const App = () => {
     return (
@@ -19,7 +19,7 @@ const App = () => {
                 <Route exact path={["/","/auth"]} component={Auth}/>
                 <Route exact path='/admin' component={MainAdminPage}/>
                 <Route exact path='/admin/profile_page/:userId' component={AdminProfilePage}/>
-                <Route path={'/user'} component={UserMainPage}/>
+                <Route path={'/user'} component={MainUserPage}/>
             </div>
         </BrowserRouter>
     );

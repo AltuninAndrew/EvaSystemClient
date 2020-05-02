@@ -1,12 +1,12 @@
 import React from 'react';
-import classes from "./UserMainPage.module.css";
+import classes from "./MainUserPage.module.css";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import {makeStyles} from "@material-ui/core/styles";
-import FellowsComponent from "./UserMainPageComponents/FellowsComponent/FellowsComponent";
-import UserInfoComponent from "./UserMainPageComponents/UserInfoComponent/UserInfoComponent";
-import UserStatisticsComponent from "./UserMainPageComponents/UserStatisticsComponent/UserStatisticsComponent";
+import FellowsComponent from "./MainUserPageComponents/FellowsComponent/FellowsComponent";
+import UserInfoComponent from "./MainUserPageComponents/UserInfoComponent/UserInfoComponent";
+import UserStatisticsComponent from "./MainUserPageComponents/UserStatisticsComponent/UserStatisticsComponent";
 
 const useStyles = makeStyles((theme) => ({
     paper_1: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const UserMainPage = props => {
+const MainUserPage = props => {
     const material_classes = useStyles();
     return (
         <div className={classes.background}>
@@ -53,4 +53,4 @@ const UserMainPage = props => {
     );
 };
 
-export default UserMainPage;
+export default MainUserPage;
