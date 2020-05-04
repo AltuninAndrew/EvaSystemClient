@@ -6,6 +6,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import RegUserComponent from "./MainAdminPageComponents/RegUserComponent";
 import UserInListComponent from "./MainAdminPageComponents/UserInListComponent";
+import {NavLink} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     paper_1: {
@@ -42,9 +43,18 @@ const MainAdminPage = (props) => {
                     </Grid>
 
                     <Grid item xs={8}>
-                        <div className={classes.user_list_header}>
-                            Список сотрудников
+                        <div className={classes.right_column_header_wrapper}>
+                            <div className={classes.user_list_header}>
+                                Список сотрудников
+                            </div>
+
+                            <div className={classes.to_criterions_page_btn_wrapper}>
+                                <NavLink to={'/admin/criterions'}>
+                                    <button>Критерии</button>
+                                </NavLink>
+                            </div>
                         </div>
+
                         <Paper className={material_classes.paper_2}>
                             <div className={classes.user_list_block}>
                                 <UserInListComponent

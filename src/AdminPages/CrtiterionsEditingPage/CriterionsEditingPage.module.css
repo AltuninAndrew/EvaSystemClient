@@ -1,0 +1,55 @@
+.background {
+    display: flex;
+    background: url("../MainAdminPage/admin_background.png");
+    background-size: cover;
+    height: 100vh;
+    min-height: 100vh;
+    background-position-y: 10pt;
+}
+
+.main_container {
+    margin-top: 17vh;
+}
+
+.main_header{
+    color: dimgrey;
+    background: white;
+    width: 190pt;
+    height: calc(22pt + 1vmin);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+    text-align: center;
+    font-size: calc(10pt + 0.7vmin);
+    border-radius: 2pt;
+}
+
+.main_header_wrapper{
+    width: 250pt;
+    height: calc(22pt + 1vmin);
+    margin-bottom: 1.5%;
+}
+
+.to_admin_page_btn_wrapper{
+    margin-top: -27pt;
+    margin-left: 200pt;
+}
+
+.to_admin_page_btn_wrapper button{
+    color: #fff;
+    font-weight: lighter;
+    font-style: italic;
+    text-decoration: none;
+    user-select: none;
+    background: #4F5352;
+    padding: .7em 1.5em;
+    outline: none;
+    border-radius: 15pt;
+    border: 0;
+}
+
+.to_admin_page_btn_wrapper button:active{
+    background: #626665;
+}
+
+.criterions_block_wrapper{
+    height:  calc(22vh + 22vw);
+}

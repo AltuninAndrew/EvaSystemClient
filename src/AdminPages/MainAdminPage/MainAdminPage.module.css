@@ -19,13 +19,14 @@
     font-size: 10pt;
     margin-top: 8%;
     color: white;
-    background: rgb(55,59,58); /* фон кнопки */
+    background: #4F5352;
     padding: .4em 1.5em; /* отступ от текста */
     outline: none;
     border-radius: 5px;
+    cursor: pointer;
 }
-.user_reg_button:hover { background: rgb(71,75,74); } /* при наведении курсора мышки */
-.user_reg_button :active { background: rgb(85,91,90); } /* при нажатии */
+
+.user_reg_button :active { background: #626665; } /* при нажатии */
 
 .user_reg_header{
     color: dimgrey;
@@ -47,10 +48,39 @@
     text-align: center;
     font-size: calc(10pt + 0.7vmin);
     border-radius: 2pt;
+}
+
+.right_column_header_wrapper{
+    width: 250pt;
+    height: calc(22pt + 1vmin);
     margin-bottom: 2.5%;
 }
+
+.to_criterions_page_btn_wrapper{
+    margin-top: -27pt;
+    margin-left: 200pt;
+}
+
+.to_criterions_page_btn_wrapper button{
+    color: #fff;
+    font-weight: lighter;
+    font-style: italic;
+    text-decoration: none;
+    user-select: none;
+    background: #4F5352;
+    padding: .7em 1.5em;
+    outline: none;
+    border-radius: 15pt;
+    border: 0;
+}
+
+.to_criterions_page_btn_wrapper button:active{
+  background: #626665;
+}
+
 
 .user_list_block{
     overflow: auto;
     height: 68vh;
 }
+
