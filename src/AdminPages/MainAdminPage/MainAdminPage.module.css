@@ -62,7 +62,7 @@
 }
 
 .to_criterions_page_btn_wrapper button{
-    color: #fff;
+    color: white;
     font-weight: lighter;
     font-style: italic;
     text-decoration: none;
@@ -72,6 +72,7 @@
     outline: none;
     border-radius: 15pt;
     border: 0;
+    cursor: pointer;
 }
 
 .to_criterions_page_btn_wrapper button:active{

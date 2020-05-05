@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import classes from './CritertionsEditorComponent.module.css';
+import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 
 const CriterionsEditorComponent = props => {
@@ -10,7 +12,7 @@ const CriterionsEditorComponent = props => {
     const PositionElement = props => {
 
         const clickAction = () => {
-            setCriterionsEditorLabel("Настройка критериев для должности: " + props.positionName.toLowerCase())
+            setCriterionsEditorLabel("Настройка критериев для должности: " + props.positionName.toLowerCase());
             setInitState(false);
         };
         return (
@@ -21,14 +23,23 @@ const CriterionsEditorComponent = props => {
     };
 
     const CriterionElement = props => {
-
         return (
             <div className={classes.criterion_element_wrapper}>
                 <div className={classes.criterion_name}>
-                    Продуктивность
+                    {props.critName}
+                    <DeleteForeverRoundedIcon className={classes.delete_crit_icon}/>
                 </div>
-
                 <input className={classes.input_weight} type="number" placeholder="1.0" step="1" min="1" max="5"/>
+            </div>
+        );
+    };
+
+    const AddCriterionElement = props => {
+        return (
+            <div className={classes.add_crit_element_wrapper}>
+                <input className={classes.criterion_name_input_field} placeholder="Название"/>
+                <input className={classes.criterion_name_input_field} type="number" placeholder="1.0" step="1" min="1" max="5"/>
+                <AddCircleIcon className={classes.add_crit_icon}/>
             </div>
         );
     };
@@ -40,7 +51,7 @@ const CriterionsEditorComponent = props => {
                     {criterionsEditorLabel}
                 </div>
 
-                {initState?
+                {initState ?
                     (
                         <div>
                         </div>
@@ -55,9 +66,15 @@ const CriterionsEditorComponent = props => {
                                 </div>
                             </div>
                             <div className={classes.criterions_list_wrapper}>
-                                <CriterionElement/>
-                                <CriterionElement/>
+                                <CriterionElement critName='Продуктивность'/>
+                                <CriterionElement critName='Скорость работы'/>
+                                <CriterionElement critName='Ответсвенность'/>
+                                <CriterionElement critName='Отзывчивость'/>
+                                <CriterionElement critName='Качество работы'/>
+                                <CriterionElement critName='Продуктивность'/>
                             </div>
+
+                            <AddCriterionElement/>
                         </div>
                     )
                 }
@@ -67,7 +84,6 @@ const CriterionsEditorComponent = props => {
 
     return (
         <div className={classes.main_wrapper}>
-
             <div className={classes.left_column_wrapper}>
                 <PositionElement
                     positionName='Директор'
@@ -78,12 +94,20 @@ const CriterionsEditorComponent = props => {
                 <PositionElement
                     positionName='Разработчик'
                 />
-            </div>
+                <PositionElement
+                    positionName='Уборщик'
+                />
+                <PositionElement
+                    positionName='Тестировщик'
+                />
+                <PositionElement
+                    positionName='Повар'
+                />
 
+            </div>
             <div>
                 <CriterionsEditor/>
             </div>
-
         </div>
     );
 };

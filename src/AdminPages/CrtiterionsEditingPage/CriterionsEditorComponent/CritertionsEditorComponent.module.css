@@ -51,6 +51,8 @@
 
 }
 .criterion_name{
+    display: grid;
+    grid-template-columns: 16fr 1fr;
     font-size: calc(4pt + 1.6vmin);
     font-family: "Segoe UI","Arial",sans-serif;
     font-weight: normal;
@@ -62,11 +64,19 @@
     box-shadow: 0 1.5pt 2pt rgba(0, 0, 0, .2);
 }
 
+.delete_crit_icon{
+    cursor: pointer;
+}
+
+.delete_crit_icon:active{
+    color: red;
+}
+
 .criterions_list_wrapper{
     overflow: auto;
     overflow: -moz-scrollbars-none;
     -ms-overflow-style: none;
-    height: calc(11vh + 18vw);
+    height: calc(2pt + 23vmax);
 }
 .criterions_list_wrapper::-webkit-scrollbar { width: 0; }
 
@@ -81,4 +91,34 @@
     font-size: calc(8pt + 0.4vmin);
     margin-bottom: 3pt;
     font-weight: revert;
+}
+
+
+.add_crit_element_wrapper{
+    margin-top: 10pt;
+    display: grid;
+    grid-template-columns: 3fr 1fr 4fr;
+    grid-column-gap: 10pt;
+    padding: 4pt;
+    box-shadow: 0 1.5pt 2pt rgba(0, 0, 0, .2);
+}
+
+.criterion_name_input_field{
+    margin-left: 2pt;
+    font-size: calc(9pt + 0.2vw);
+    font-family: "Segoe UI","Arial",sans-serif;
+    font-weight: normal;
+    color: #373B3A;
+    padding: 2pt;
+}
+
+.add_crit_icon{
+    display: block;
+    margin-bottom: auto;
+    margin-top: auto;
+    font-size: calc(16pt + 0.5vw)!important;
+}
+
+.add_crit_icon:active{
+    color: #1172c4;
 }
