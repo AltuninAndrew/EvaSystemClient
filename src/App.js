@@ -7,7 +7,7 @@ import AdminProfilePage from "./AdminPages/AdminProfilePage/AdminProfilePage";
 import MainUserPage from "./UserPages/MainUserPage/MainUserPage"
 import CriterionsEditingPage from "./AdminPages/CrtiterionsEditingPage/CriterionsEditingPage";
 
-const App = () => {
+const App = (props) => {
     return (
         <BrowserRouter>
             <div>
@@ -18,7 +18,7 @@ const App = () => {
                 </header>
 
                 <Route exact path={["/","/auth"]} component={Auth}/>
-                <Route exact path='/admin' component={MainAdminPage}/>
+                <Route exact path='/admin' render={()=> <MainAdminPage state={props.state.mainAdminPage} dispatch={props.dispatch}/>}/>
                 <Route exact path='/admin/profile_page/:userId' component={AdminProfilePage}/>
                 <Route exact path='/admin/criterions' component={CriterionsEditingPage}/>
                 <Route path={'/user'} component={MainUserPage}/>

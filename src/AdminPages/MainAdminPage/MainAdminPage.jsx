@@ -30,6 +30,18 @@ const LeftColumnHeader = (props) => {
 };
 
 const MainAdminPage = (props) => {
+
+    let usersElements = props.state.users
+        .map((user)=>(
+            <UserInListComponent
+                userName={`${user.lastName} ${user.firstName} ${user.middleName}`}
+                position={user.position}
+                email={user.email}
+                avatarLink={user.avatar}
+                userId={user.login}
+            />)
+        );
+
     const material_classes = useStyles();
     return (
         <div className={classes.background}>
@@ -38,7 +50,7 @@ const MainAdminPage = (props) => {
                     <Grid item xs={4}>
                         <LeftColumnHeader label="Регистрация пользователей"/>
                         <Paper className={material_classes.paper_1}>
-                            <RegUserComponent/>
+                            <RegUserComponent dispatch={props.dispatch}/>
                         </Paper>
                     </Grid>
 
@@ -57,76 +69,7 @@ const MainAdminPage = (props) => {
 
                         <Paper className={material_classes.paper_2}>
                             <div className={classes.user_list_block}>
-                                <UserInListComponent
-                                    userName="Иванов Иван Иванович"
-                                    position="Разработчик"
-                                    email="ivanov@mail.ru"
-                                    avatarLink="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                                    userId="ivanov"
-                                />
-                                <UserInListComponent
-                                    userName="Петров Иван Иванович"
-                                    position="Художник"
-                                    email="petrov@gmail.com"
-                                    avatarLink="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                                    userId="petrov"
-                                />
-
-                                <UserInListComponent
-                                    userName="Иванов Иван Иванович"
-                                    position="Разработчик"
-                                    email="ivanov@mail.ru"
-                                    avatarLink="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                                />
-
-                                <UserInListComponent
-                                    userName="Петров Иван Иванович"
-                                    position="Художник"
-                                    email="petrov@gmail.com"
-                                    avatarLink="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                                />
-
-                                <UserInListComponent
-                                    userName="Иванов Иван Иванович"
-                                    position="Разработчик"
-                                    email="ivanov@mail.ru"
-                                    avatarLink="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                                />
-
-                                <UserInListComponent
-                                    userName="Петров Иван Иванович"
-                                    position="Художник"
-                                    email="petrov@gmail.com"
-                                    avatarLink="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                                />
-
-                                <UserInListComponent
-                                    userName="Иванов Иван Иванович"
-                                    position="Разработчик"
-                                    email="ivanov@mail.ru"
-                                    avatarLink="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                                />
-
-                                <UserInListComponent
-                                    userName="Петров Иван Иванович"
-                                    position="Художник"
-                                    email="petrov@gmail.com"
-                                    avatarLink="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                                />
-                                <UserInListComponent
-                                    userName="Иванов Иван Иванович"
-                                    position="Разработчик"
-                                    email="ivanov@mail.ru"
-                                    avatarLink="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                                />
-
-                                <UserInListComponent
-                                    userName="Петров Иван Иванович"
-                                    position="Художник"
-                                    email="petrov@gmail.com"
-                                    avatarLink="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                                />
-
+                                {usersElements}
                             </div>
                         </Paper>
                     </Grid>

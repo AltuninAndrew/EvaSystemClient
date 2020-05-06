@@ -1,7 +1,8 @@
 import classes from "../MainAdminPage.module.css";
 import TextField from "@material-ui/core/TextField";
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
-import React from "react";
+import React, {useState} from "react";
+import {regNewUserCreator} from "../../../Redux/adminReducer";
 
 
 const theme = createMuiTheme({
@@ -14,17 +15,58 @@ const theme = createMuiTheme({
 );
 
 const RegUserComponent = (props) => {
+
+    /*некоторый тестовый говнокод*/
+
+    let [firstName, setFirstName] = useState('');
+    let [lastName, setLastName] = useState('');
+    let [middleName, setMiddleName] = useState('');
+
+    const firstNameChanger = (e)=>
+    {
+        setFirstName(e.target.value);
+    };
+
+    const lastNameChanger = (e)=>
+    {
+        setLastName(e.target.value);
+    };
+
+    const middleNameChanger = (e)=>
+    {
+        setMiddleName(e.target.value);
+    };
+
+    const regNewUser=()=>{
+
+        let someUser =  {
+                firstName:firstName,
+                middleName:middleName,
+                lastName:lastName,
+                email:"test@psina.com",
+                avatar:"https://my.roomz.asia/avatar/2019/10/12/1570872461.png",
+                position:"Дизайнер",
+                login:'cum'
+            };
+
+        let action = regNewUserCreator(someUser);
+        setFirstName('');
+        setLastName('');
+        setMiddleName('');
+        props.dispatch(action);
+    };
+
     return(
         <MuiThemeProvider theme={theme}>
             <div>
                 <div className={classes.user_reg_element}>
-                    <TextField required id="second-name" label="Фамилия"/>
+                    <TextField required id="second-name" label="Фамилия" value={lastName} onChange={lastNameChanger}/>
                 </div>
                 <div className={classes.user_reg_element}>
-                    <TextField required id="first-name" label="Имя"/>
+                    <TextField required id="first-name" label="Имя" value={firstName} onChange={firstNameChanger} valueL/>
                 </div>
                 <div className={classes.user_reg_element}>
-                    <TextField required id="middle-name" label="Отчество"/>
+                    <TextField required id="middle-name" label="Отчество" value={middleName} onChange={middleNameChanger}/>
                 </div>
 
                 <div className={classes.user_reg_element}>
@@ -38,7 +80,7 @@ const RegUserComponent = (props) => {
                 <div className={classes.user_reg_element}>
                     <TextField required id="password" label="Придумайте пароль"/>
                 </div>
-                <button className={classes.user_reg_button}>
+                <button className={classes.user_reg_button} onClick={regNewUser}>
                     Зарегистрировать
                 </button>
             </div>
