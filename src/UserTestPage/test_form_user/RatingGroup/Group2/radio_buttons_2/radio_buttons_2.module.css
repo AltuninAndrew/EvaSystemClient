@@ -1,0 +1,20 @@
+.radioStyle1{
+    display: flex;
+    text-align: center;
+    margin: calc(1px + 0.65vw);
+
+
+
+}
+.label_style{
+    display: block;
+    margin: 0 calc(1px + 1.7vw)
+
+
+}
+
+input[type=radio] {
+    border: 1px;
+    width: 80%;
+    height: 1.6em;
+}

@@ -1,0 +1,22 @@
+
+.skills_text_style{
+    font-family: "Segoe UI";
+    text-align: left;
+    margin: calc(1pt + 0.3vw) 0;
+    font-size: calc(1pt + 1vw);
+    font-weight: lighter;
+    color: black;
+
+}
+.rating_wrapper{
+    margin-top: 30pt;
+}
+.skills_logo{
+    font-family: "Segoe UI";
+    text-align: left;
+    margin: calc(1pt + 0.7vw) 0;
+    font-size: calc(5pt + 1vw);
+    font-weight: lighter;
+    color: black;
+
+}

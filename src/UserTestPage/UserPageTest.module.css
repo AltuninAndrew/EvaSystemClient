@@ -1,0 +1,14 @@
+.background{
+    display: flex;
+    background: #EBEBEB;
+    background-size: cover;
+    background-clip: border-box;
+    height: 100vh;
+}
+
+.main_container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 65pt
+}

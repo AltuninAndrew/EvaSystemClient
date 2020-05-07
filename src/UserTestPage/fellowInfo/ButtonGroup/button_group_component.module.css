@@ -1,0 +1,37 @@
+.button_container{
+    margin-top: calc(1px + 2vw);
+}
+.next_button {
+    margin-top:  calc(1pt + 0.5vw);
+    margin-left: calc(1pt + 0.5vw);
+    color: white;
+    background: #F2AE30;
+    outline: none;
+    font-size: calc(2pt + 1vw);
+    font-family: "Segoe UI";
+    padding: 10pt;
+    width: 45%;
+    height: auto;
+    cursor: pointer;
+    border: 0;
+    margin-bottom: 2pt;
+
+}
+
+.prev_button{
+    margin-top:  calc(1pt + 0.5vw);
+    margin-right: calc(1pt + 0.5vw);
+    color: white;
+    background: #373B3A;
+    outline: none;
+    font-family: "Segoe UI";
+    font-size: calc(2pt + 1vw);
+    padding: 10pt;
+    vertical-align: central;
+    text-align: center;
+    width: 45%;
+    height: auto;
+    cursor: pointer;
+    border: 0;
+    margin-bottom: 2pt;
+}

@@ -1,0 +1,17 @@
+.text_style{
+    margin-left: calc(1px + 0.5vw);
+    margin-top: calc(1px + 0.5vw);
+    font-size: calc(1px + 1.5vw);
+    font-family: "Segoe UI";
+
+
+}
+.grid{
+    display: grid;
+
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 8fr;
+    grid-gap: calc(1px + 1vw);
+    align-content: center;
+    background: white;
+}
