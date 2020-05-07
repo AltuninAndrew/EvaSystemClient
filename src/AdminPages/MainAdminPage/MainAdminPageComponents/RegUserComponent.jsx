@@ -2,7 +2,7 @@ import classes from "../MainAdminPage.module.css";
 import TextField from "@material-ui/core/TextField";
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
 import React, {useState} from "react";
-import {regNewUserCreator} from "../../../Redux/adminReducer";
+
 
 
 const theme = createMuiTheme({
@@ -22,23 +22,19 @@ const RegUserComponent = (props) => {
     let [lastName, setLastName] = useState('');
     let [middleName, setMiddleName] = useState('');
 
-    const firstNameChanger = (e)=>
-    {
+    const firstNameChanger = (e)=> {
         setFirstName(e.target.value);
     };
 
-    const lastNameChanger = (e)=>
-    {
+    const lastNameChanger = (e)=> {
         setLastName(e.target.value);
     };
 
-    const middleNameChanger = (e)=>
-    {
+    const middleNameChanger = (e)=> {
         setMiddleName(e.target.value);
     };
 
-    const regNewUser=()=>{
-
+    const onRegNewUser=()=>{
         let someUser =  {
                 firstName:firstName,
                 middleName:middleName,
@@ -48,12 +44,10 @@ const RegUserComponent = (props) => {
                 position:"Дизайнер",
                 login:'cum'
             };
-
-        let action = regNewUserCreator(someUser);
+        props.regNewUser(someUser);
         setFirstName('');
         setLastName('');
         setMiddleName('');
-        props.dispatch(action);
     };
 
     return(
@@ -80,7 +74,7 @@ const RegUserComponent = (props) => {
                 <div className={classes.user_reg_element}>
                     <TextField required id="password" label="Придумайте пароль"/>
                 </div>
-                <button className={classes.user_reg_button} onClick={regNewUser}>
+                <button className={classes.user_reg_button} onClick={onRegNewUser}>
                     Зарегистрировать
                 </button>
             </div>

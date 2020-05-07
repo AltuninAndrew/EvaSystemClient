@@ -31,9 +31,10 @@ const LeftColumnHeader = (props) => {
 
 const MainAdminPage = (props) => {
 
-    let usersElements = props.state.users
+    let usersElements = props.users
         .map((user)=>(
             <UserInListComponent
+                key={user.login}
                 userName={`${user.lastName} ${user.firstName} ${user.middleName}`}
                 position={user.position}
                 email={user.email}
@@ -50,7 +51,7 @@ const MainAdminPage = (props) => {
                     <Grid item xs={4}>
                         <LeftColumnHeader label="Регистрация пользователей"/>
                         <Paper className={material_classes.paper_1}>
-                            <RegUserComponent dispatch={props.dispatch}/>
+                            <RegUserComponent regNewUser={props.regNewUser}/>
                         </Paper>
                     </Grid>
 

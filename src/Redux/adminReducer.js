@@ -44,10 +44,15 @@ const adminReducer = (state = initialState, action)=>{
             login:action.newUser.login
         };
 
-        state.users.push(newUser);
+        return {
+            ...state,
+            users:[...state.users, newUser],
+        };
+
+    } else {
+        return state;
     }
 
-    return state
 };
 
 export const regNewUserCreator = (newUser) =>({type:REG_NEW_USER, newUser:newUser});
