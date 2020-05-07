@@ -6,7 +6,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import AdminProfilePage from "./AdminPages/AdminProfilePage/AdminProfilePage";
 import MainUserPage from "./UserPages/MainUserPage/MainUserPage"
 import CriterionsEditingPage from "./AdminPages/CrtiterionsEditingPage/CriterionsEditingPage";
-
+import UserTestPage from "./UserTestPage/UserTestPage";
 const App = (props) => {
     return (
         <BrowserRouter>
@@ -22,6 +22,7 @@ const App = (props) => {
                 <Route exact path='/admin/profile_page/:userId' component={AdminProfilePage}/>
                 <Route exact path='/admin/criterions' component={CriterionsEditingPage}/>
                 <Route path={'/user'} component={MainUserPage}/>
+                <Route path={'/userTest'} component={UserTestPage}/>
             </div>
         </BrowserRouter>
     );
