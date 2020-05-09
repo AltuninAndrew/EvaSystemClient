@@ -17,7 +17,7 @@ const UserInListComponent = props => {
     const materialClasses = useStyles();
     return(
         <div className={classes.main_wrapper}>
-            <Avatar variant="square" src={props.avatarLink} className={materialClasses.avatar} />
+            <Avatar variant="square" src={`data:image/jpeg;base64,${props.avatarImage}`} className={materialClasses.avatar} />
             <div className={classes.text_userName}>
                 {props.userName}
             </div>

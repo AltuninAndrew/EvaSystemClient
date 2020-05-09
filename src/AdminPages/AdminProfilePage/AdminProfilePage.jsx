@@ -199,6 +199,6 @@ const AdminProfilePage = props => {
     );
 };
 
-let wt = withRouter(AdminProfilePage);
+let WT = withRouter(AdminProfilePage);
 
-export default wt;
+export default WT;

@@ -57,7 +57,7 @@ const RegUserComponent = (props) => {
                     <TextField required id="second-name" label="Фамилия" value={lastName} onChange={lastNameChanger}/>
                 </div>
                 <div className={classes.user_reg_element}>
-                    <TextField required id="first-name" label="Имя" value={firstName} onChange={firstNameChanger} valueL/>
+                    <TextField required id="first-name" label="Имя" value={firstName} onChange={firstNameChanger}/>
                 </div>
                 <div className={classes.user_reg_element}>
                     <TextField required id="middle-name" label="Отчество" value={middleName} onChange={middleNameChanger}/>

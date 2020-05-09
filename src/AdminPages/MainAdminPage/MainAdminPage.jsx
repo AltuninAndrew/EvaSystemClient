@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './MainAdminPage.module.css';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
@@ -21,24 +21,16 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const LeftColumnHeader = (props) => {
-    return (
-        <div className={classes.user_reg_header}>
-            {props.label}
-        </div>
-    );
-};
-
 const MainAdminPage = (props) => {
 
     let usersElements = props.users
-        .map((user)=>(
+        .map((user) => (
             <UserInListComponent
                 key={user.login}
                 userName={`${user.lastName} ${user.firstName} ${user.middleName}`}
                 position={user.position}
                 email={user.email}
-                avatarLink={user.avatar}
+                avatarImage={user.avatar}
                 userId={user.login}
             />)
         );
@@ -49,7 +41,9 @@ const MainAdminPage = (props) => {
             <Container maxWidth="md" className={classes.main_container}>
                 <Grid container spacing={3}>
                     <Grid item xs={4}>
-                        <LeftColumnHeader label="Регистрация пользователей"/>
+                        <div className={classes.user_reg_header}>
+                            Регистрация пользователей
+                        </div>
                         <Paper className={material_classes.paper_1}>
                             <RegUserComponent regNewUser={props.regNewUser}/>
                         </Paper>
@@ -74,13 +68,10 @@ const MainAdminPage = (props) => {
                             </div>
                         </Paper>
                     </Grid>
-
                 </Grid>
-
             </Container>
         </div>
     );
 };
-
 
 export default MainAdminPage;
