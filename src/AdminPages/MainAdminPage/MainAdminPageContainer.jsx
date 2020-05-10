@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import MainAdminPage from "./MainAdminPage";
-import {getUsersFromServer, regNewUser} from "../../Redux/adminReducer";
+import {getUsersFromServer, regNewUser} from "../../Redux/Reducers/adminReducer";
 import React, {useEffect} from "react";
 
 let mapStateToProps = (state) =>{

@@ -1,5 +1,4 @@
-import * as axios from "axios";
-import * as AdminAPI from "../API/AdminAPI";
+import * as AdminAPI from "../../API/AdminAPI";
 
 const REG_NEW_USER = 'REG-NEW-USER';
 const SET_USERS = 'SET-USERS';

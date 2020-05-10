@@ -7,55 +7,72 @@
     min-height: 99vh;
 }
 
-.auth_input {
-    width: 75%;
-    margin: 0 auto;
+
+.inputs_wrapper{
+    margin-top: 2.6vw;
 }
 
-.auth_enter_text{
-    font-size: 12pt;
-    font-weight: bold;
-    margin-top: 2pt;
-}
-
-.auth_enter{
-    width: 60%;
-    margin-left: auto;
+.input{
+    display: block;
     margin-right: auto;
-    margin-top: 2vh;
+    margin-left: auto;
+    margin-bottom: 1.3vw;
 }
+.form_submit_btn{
+    margin-top: 2vw;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    border: 0;
+    color: white;
+    background: #F2AE30;
+    outline: none;
+    font-size: calc(5pt + 1vw);
+    padding: 0.5vw;
+    width: 60%;
+    cursor: pointer;
+}
+
+.form_submit_btn:active{
+    background: #aa732c;
+}
+
+.wrong_input{
+    font-size: calc(2pt + 0.8vw);
+    text-align: center;
+    font-weight: bold;
+}
+
 
 .main_text {
     color: whitesmoke;
     font-family: "Monotype Corsiva", Arial, serif;
-    font-size: calc(22px + 2vmin);
+    font-size: calc(4pt + 2.2vw);
     margin-top: 38pt;
     margin-left: 40pt;
 }
 
 .auth_container{
-    background: rgba(225, 225, 225, 0.9);
+    background: rgba(55, 59, 58, 0.9);
     color: white;
     width: 23vw;
-    height: 53vh;
+    height: calc(17vh + 17vw);
     margin-top: 90pt;
     margin-left: 40pt;
 }
 
 .auth_container_header{
     background-color: rgb(37,40,40);
-    height: 12vh;
+    height: calc(4.5vh + 4.5vw);
     width: inherit;
     display: inline-flex;
 }
 
 .auth_container_header_text{
-    font-family: Arial, serif;
+    font-family: Segoe UI,Arial, sans-serif;
     font-weight: bold;
-    font-size: calc(20px + 2.1vmin);
+    font-size: calc(12pt + 1.6vw);
     margin-left: auto;
     margin-right: auto;
+    margin-top: 1.5vw;
 }
-
-
-
