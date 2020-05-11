@@ -3,6 +3,10 @@ import classes from './Auth.module.css';
 import CustomInput from './CustomInputs/CustomInput'
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../Validators/validators";
+import {connect} from "react-redux";
+import {login, me} from "../Redux/Reducers/authReducer";
+import {Redirect} from "react-router-dom";
+import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 
 const maxLength100 = maxLengthCreator(30);
 
@@ -50,9 +54,16 @@ const LoginReduxForm = reduxForm({form: 'login'})(MainLoginFormElement);
 
 const Auth = (props) => {
 
+    props.me();
+
     const onSubmitForm = (formData) => {
-        console.log(formData);
+       props.login(formData.email,formData.password);
     };
+
+    if(props.isAuth){
+        return <Redirect to={"/admin"}/>
+    }
+
 
     return (
         <div className={classes.background}>
@@ -78,5 +89,11 @@ const Auth = (props) => {
     );
 };
 
+let mapsStateToProps = (state) =>{
+    return {
+        isAuth:state.auth.isAuth,
+    };
+};
 
-export default Auth;
+
+export default connect(mapsStateToProps,{login,me})(Auth);
