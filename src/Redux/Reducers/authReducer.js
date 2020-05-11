@@ -43,7 +43,7 @@ export const setUserInfo = (firstName,lastName,middleName,position,avatarImage) 
 
 export const me = () => (dispatch) =>{
       let jwtFromLocalStorage = localStorage.getItem("userJWT");
-      if(jwtFromLocalStorage.length > 0){
+      if(jwtFromLocalStorage!==null && jwtFromLocalStorage.length > 0){
           AuthAPI.checkJWT(jwtFromLocalStorage)
               .then(response => {
                   let username = response.data.userName;

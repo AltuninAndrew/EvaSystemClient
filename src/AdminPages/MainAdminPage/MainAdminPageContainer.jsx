@@ -2,23 +2,31 @@ import {connect} from "react-redux";
 import MainAdminPage from "./MainAdminPage";
 import {getUsersFromServer, regNewUser} from "../../Redux/Reducers/adminReducer";
 import React, {useEffect} from "react";
+import {me} from "../../Redux/Reducers/authReducer";
+import {Redirect} from "react-router-dom";
 
 let mapStateToProps = (state) =>{
     return {
         users:state.mainAdminPage.users,
+        isAuth:state.auth.isAuth,
+        jwt:state.auth.JWT,
+        userRole:state.auth.role,
     };
 };
 
 const MainAdminPageContainerAPI = (props) =>{
-    useEffect(() => {
-        props.getUsersFromServer("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6ImFkbWluIiwianRpIjoiMjQ5ZDBkYWItNmE3Yy00MGY1LTk2MmEtNDY5ZGNiMjRhNWM2IiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsIlJvbGUiOiJhZG1pbiIsImlkIjoiZTczZWRiNzMtNzg0ZC00NjYyLTlhYTAtMzBjMjUzNDVlMGUxIiwibmJmIjoxNTg5MDQ2ODQ1LCJleHAiOjE1ODkwNTQwNDUsImlhdCI6MTU4OTA0Njg0NX0.CsMeqTGFSU4xII0Cy3brWcktP8uOg7UJJb5DC5mFq_w");
-    });
 
-    return(
-        <MainAdminPage users={props.users} regNewUser ={props.regNewUser}/>
-    );
+    if(props.isAuth && props.userRole==="admin"){
+        props.getUsersFromServer(props.jwt);
+        console.log("das");
+        return <MainAdminPage users={props.users} regNewUser ={props.regNewUser}/>
+    }else {
+        return <Redirect to={"/"}/>
+    }
+
+
 };
 
-const MainAdminPageContainer = connect(mapStateToProps, {regNewUser,getUsersFromServer})(MainAdminPageContainerAPI);
+const MainAdminPageContainer = connect(mapStateToProps, {regNewUser,getUsersFromServer,me})(MainAdminPageContainerAPI);
 
 export default MainAdminPageContainer;

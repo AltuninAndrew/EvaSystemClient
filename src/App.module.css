@@ -1,0 +1,43 @@
+.App {
+    text-align: center;
+}
+
+.app_header {
+    display: grid;
+    grid-template-columns: 8fr 1fr;
+    background-color: rgb(55, 59, 58);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.app_header_text {
+    color: whitesmoke;
+    font-family: "Lucida Calligraphy", "Arial Black", serif;
+    font-size: calc(22px + 2vmin);
+    font-weight: bold;
+    margin-left: 14pt;
+    margin-top: 3pt;
+}
+
+.login_button {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: calc(4pt + 0.35vw);
+    color: white;
+    background: #F2AE30;
+    outline: none;
+    font-family: Segoe UI,Arial,sans-serif;
+    border-radius: 3pt;
+    font-size: calc(0.5pt + 0.9vw);
+    padding: 3pt;
+    cursor: pointer;
+}
+
+.btn_wrapper {
+
+}

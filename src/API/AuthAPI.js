@@ -25,4 +25,4 @@ export const getUserInfo = (username,jwt) =>{
             "Authorization": `bearer ${jwt}`,
         }
     });
-}
+};

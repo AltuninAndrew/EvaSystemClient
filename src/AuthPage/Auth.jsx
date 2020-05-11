@@ -6,7 +6,6 @@ import {maxLengthCreator, required} from "../Validators/validators";
 import {connect} from "react-redux";
 import {login, me} from "../Redux/Reducers/authReducer";
 import {Redirect} from "react-router-dom";
-import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 
 const maxLength100 = maxLengthCreator(30);
 
@@ -60,8 +59,12 @@ const Auth = (props) => {
        props.login(formData.email,formData.password);
     };
 
-    if(props.isAuth){
+    if(props.isAuth && props.userRole === "admin"){
         return <Redirect to={"/admin"}/>
+    }
+
+    if(props.isAuth && props.userRole === "user"){
+        return <Redirect to={"/user"}/>
     }
 
 
@@ -89,11 +92,11 @@ const Auth = (props) => {
     );
 };
 
-let mapsStateToProps = (state) =>{
+let mapStateToProps = (state) =>{
     return {
         isAuth:state.auth.isAuth,
+        userRole:state.auth.role,
     };
 };
 
-
-export default connect(mapsStateToProps,{login,me})(Auth);
+export default connect(mapStateToProps,{login,me})(Auth);
