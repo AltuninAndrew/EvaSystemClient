@@ -8,25 +8,34 @@ import {Redirect} from "react-router-dom";
 let mapStateToProps = (state) =>{
     return {
         users:state.mainAdminPage.users,
-        isAuth:state.auth.isAuth,
-        jwt:state.auth.JWT,
         userRole:state.auth.role,
+        jwt:state.auth.JWT,
+        isAuth:state.auth.isAuth
     };
 };
 
 const MainAdminPageContainerAPI = (props) =>{
 
-    if(props.isAuth && props.userRole==="admin"){
+    useEffect(() => {
         props.getUsersFromServer(props.jwt);
-        console.log("das");
-        return <MainAdminPage users={props.users} regNewUser ={props.regNewUser}/>
-    }else {
-        return <Redirect to={"/"}/>
+    }, []);
+    
+
+    if(props.userRole!=="admin" && props.isAuth){
+        console.log('da');
+        return <Redirect to={"/user"}/>
     }
 
+    if(props.userRole==="admin")
+    {
+        return <MainAdminPage users={props.users} regNewUser ={props.regNewUser}/>
+    }
+
+    return <div>
+    </div>
 
 };
 
-const MainAdminPageContainer = connect(mapStateToProps, {regNewUser,getUsersFromServer,me})(MainAdminPageContainerAPI);
+const MainAdminPageContainer = connect(mapStateToProps, {regNewUser,getUsersFromServer})(MainAdminPageContainerAPI);
 
 export default MainAdminPageContainer;

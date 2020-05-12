@@ -1,14 +1,29 @@
 import React from 'react';
 import classes from './App.module.css';
 import Auth from './AuthPage/Auth'
-import {Route} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 import AdminProfilePage from "./AdminPages/AdminProfilePage/AdminProfilePage";
 import CriterionsEditingPage from "./AdminPages/CrtiterionsEditingPage/CriterionsEditingPage";
 import MainAdminPageContainer from "./AdminPages/MainAdminPage/MainAdminPageContainer";
 import {connect} from "react-redux";
-import {logout} from "./Redux/Reducers/authReducer";
+import {deleteUserFromState, logout, me} from "./Redux/Reducers/authReducer";
 import MainUserPageContainer from "./UserPages/MainUserPage/MainUserPageContainer";
 
+
+const Redirector = (props) =>{
+    if(props.isAuth===false){
+        if(props.jwt!==""){
+            props.me();
+        }else {
+            return <Redirect to={"/"}/>
+        }
+    }
+    return (
+        <div>
+        </div>
+    )
+
+};
 
 const Header = (props) => {
     return (
@@ -27,7 +42,8 @@ const Header = (props) => {
 const App = (props) => {
     return (
         <div>
-            <Header isAuth={props.isAuth} logOut = {props.logout}/>
+            <Header isAuth={props.isAuth} logOut = {props.deleteUserFromState}/>
+            <Redirector isAuth={props.isAuth} me={props.me} jwt={props.jwt} userRole={props.userRole}/>
             <Route exact path={["/", "/auth"]} component={Auth}/>
             <Route exact path='/admin' render={() => <MainAdminPageContainer/>}/>
             <Route exact path='/admin/profile_page/:userId' component={AdminProfilePage}/>
@@ -40,9 +56,11 @@ const App = (props) => {
 let mapsStateToProps = (state) => {
     return {
         isAuth: state.auth.isAuth,
+        jwt:state.auth.JWT,
+        userRole:state.auth.role,
     };
 };
 
 
-export default connect(mapsStateToProps, {logout})(App);
+export default connect(mapsStateToProps, {deleteUserFromState,me})(App);
 

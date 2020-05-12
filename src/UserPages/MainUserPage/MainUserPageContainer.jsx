@@ -1,7 +1,8 @@
 import {connect} from "react-redux";
 import MainUserPage from "./MainUserPage"
-import React, {useEffect} from "react";
+import React from "react";
 import {Redirect} from "react-router-dom";
+import {me} from "../../Redux/Reducers/authReducer";
 
 let mapStateToProps = (state) =>{
     return {
@@ -12,15 +13,9 @@ let mapStateToProps = (state) =>{
 };
 
 const MainUserPageContainerAPI = (props) =>{
-
-    if(props.isAuth && props.userRole.toString()==="user"){
-        return <MainUserPage/>
-    } else {
-        return <Redirect to={"/"}/>
-    }
-
+    return <MainUserPage/>
 };
 
-const MainUserPageContainer = connect(mapStateToProps,null)(MainUserPageContainerAPI);
+const MainUserPageContainer = connect(mapStateToProps,{me})(MainUserPageContainerAPI);
 
 export default MainUserPageContainer;

@@ -3,10 +3,13 @@ import {stopSubmit} from "redux-form";
 
 const SET_AUTH_USER_DATA = "SET-AUTH-DATA";
 const SET_USER_INFO = "SET-USER-INFO";
+const REMOVE_USER = "REMOVE-USER";
+
+let jwtFromStorage = localStorage.getItem("userJWT");
 
 let initialState = {
-    JWT:"",
-    isAuth:"",
+    JWT:jwtFromStorage,
+    isAuth:false,
     role:"",
     username:"",
     userInfo:{
@@ -30,6 +33,13 @@ const authReducer = (state = initialState,action) =>{
                 ...state,
                 userInfo: action.data,
             };
+        case REMOVE_USER:
+            localStorage.setItem("userJWT","");
+            return {
+                ...state,
+                ...initialState,
+                JWT:""
+            };
         default:
             return state;
     }
@@ -40,6 +50,8 @@ export const setAuthUserData = (JWT,isAuth,role,username) => ({type:SET_AUTH_USE
 export const setUserInfo = (firstName,lastName,middleName,position,avatarImage) => (
     {type:SET_USER_INFO,data:{firstName,lastName,middleName,position,avatarImage}}
     );
+
+export const deleteUserFromState = ()=> ({type:REMOVE_USER});
 
 export const me = () => (dispatch) =>{
       let jwtFromLocalStorage = localStorage.getItem("userJWT");
@@ -57,6 +69,7 @@ export const me = () => (dispatch) =>{
                               response.data.avatarImage
                           ));
                           dispatch(setAuthUserData(jwtFromLocalStorage,true,response.data.userRole,username));
+                          console.log("here");
                       })
                       .catch(error=>{
                           console.log(error);
@@ -84,11 +97,16 @@ export const login = (email,password) => (dispatch) =>{
             }
         })
         .catch(error => {
-            if(error.response.data.toString() === "Email/password incorrect"){
-                dispatch(stopSubmit("login",{_error:"Неверный email или пароль"}));
+            if(error.data!==undefined){
+                if(error.response.data.toString() === "Email/password incorrect"){
+                    dispatch(stopSubmit("login",{_error:"Неверный email или пароль"}));
+                }else {
+                    dispatch(stopSubmit("login",{_error:error.response.data}));
+                }
             }else {
-                dispatch(stopSubmit("login",{_error:error.response.data}));
+                dispatch(stopSubmit("login",{_error:"Сервер не отвечает"}));
             }
+
         });
 };
 

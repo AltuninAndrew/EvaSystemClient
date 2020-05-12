@@ -53,20 +53,17 @@ const LoginReduxForm = reduxForm({form: 'login'})(MainLoginFormElement);
 
 const Auth = (props) => {
 
-    props.me();
 
     const onSubmitForm = (formData) => {
        props.login(formData.email,formData.password);
     };
 
-    if(props.isAuth && props.userRole === "admin"){
+    if(props.userRole==="admin"){
         return <Redirect to={"/admin"}/>
     }
-
-    if(props.isAuth && props.userRole === "user"){
+    if(props.userRole==="user"){
         return <Redirect to={"/user"}/>
     }
-
 
     return (
         <div className={classes.background}>
@@ -96,6 +93,7 @@ let mapStateToProps = (state) =>{
     return {
         isAuth:state.auth.isAuth,
         userRole:state.auth.role,
+        jwt:state.auth.JWT,
     };
 };
 
