@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import RegUserComponent from "./MainAdminPageComponents/RegUserComponent";
+import RegUserComponent from "./MainAdminPageComponents/RegUserComponent/RegUserComponent";
 import UserInListComponent from "./MainAdminPageComponents/UserInListComponent";
 import {NavLink} from "react-router-dom";
 
@@ -45,7 +45,8 @@ const MainAdminPage = (props) => {
                             Регистрация пользователей
                         </div>
                         <Paper className={material_classes.paper_1}>
-                            <RegUserComponent regNewUser={props.regNewUser}/>
+                            <RegUserComponent getUsersFromServer={props.getUsersFromServer}
+                                              regNewUserInServer={props.regNewUserInServer} jwt={props.jwt}/>
                         </Paper>
                     </Grid>
 

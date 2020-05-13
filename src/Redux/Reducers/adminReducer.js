@@ -1,6 +1,6 @@
 import * as AdminAPI from "../../API/AdminAPI";
+import {stopSubmit} from "redux-form";
 
-const REG_NEW_USER = 'REG-NEW-USER';
 const SET_USERS = 'SET-USERS';
 
 let initialState = {
@@ -8,23 +8,8 @@ let initialState = {
 };
 
 const adminReducer = (state = initialState, action) => {
-    if (action.type === REG_NEW_USER) {
-        let newUser = {
-            firstName: action.newUser.firstName,
-            middleName: action.newUser.middleName,
-            lastName: action.newUser.lastName,
-            email: action.newUser.email,
-            avatar: action.newUser.avatar,
-            position: action.newUser.position,
-            login: action.newUser.login
-        };
 
-        return {
-            ...state,
-            users: [...state.users, newUser],
-        };
-
-    } else if (action.type === SET_USERS) {
+    if (action.type === SET_USERS) {
         let newUsers = action.users.map((user) => ({
             firstName: user.firstName,
             middleName: user.middleName,
@@ -32,7 +17,7 @@ const adminReducer = (state = initialState, action) => {
             email: user.email,
             avatar: user.avatarImage,
             position: user.position,
-            login: user.login
+            login: user.username,
         }));
 
         return {
@@ -46,15 +31,35 @@ const adminReducer = (state = initialState, action) => {
 
 };
 
-export const regNewUser = (newUser) => ({type: REG_NEW_USER, newUser: newUser});
+
 export const setUsers = (users) => ({type: SET_USERS, users: users});
 
 export const getUsersFromServer = (jwt) => {
     return (dispatch) => {
-       AdminAPI.getUsers(jwt).then((data) =>
+        AdminAPI.getUsers(jwt).then((data) =>
             dispatch(setUsers(data)),
         );
     }
+};
+
+
+export const regNewUserInServer = (jwt,email,password,firstName,middleName,lastName,position) => (dispatch)=> {
+    AdminAPI.regUser(jwt,email,password,firstName,middleName,lastName,position)
+        .then(response=>{
+            if(response.data.success===true)
+            {
+                AdminAPI.getUsers(jwt).then((data) =>
+                    dispatch(setUsers(data)),
+                );
+            }
+        }).catch(error=>{
+            if(error.response!==undefined){
+                dispatch(stopSubmit("regUser",{_error:error.response.data}));
+            } else {
+                dispatch(stopSubmit("regUser",{_error:"Сервер не отвечает"}));
+            }
+    });
+
 };
 
 export default adminReducer;

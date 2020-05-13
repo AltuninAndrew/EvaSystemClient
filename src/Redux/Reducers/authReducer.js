@@ -69,7 +69,6 @@ export const me = () => (dispatch) =>{
                               response.data.avatarImage
                           ));
                           dispatch(setAuthUserData(jwtFromLocalStorage,true,response.data.userRole,username));
-                          console.log("here");
                       })
                       .catch(error=>{
                           console.log(error);
@@ -97,7 +96,7 @@ export const login = (email,password) => (dispatch) =>{
             }
         })
         .catch(error => {
-            if(error.data!==undefined){
+            if(error.response!==undefined){
                 if(error.response.data.toString() === "Email/password incorrect"){
                     dispatch(stopSubmit("login",{_error:"Неверный email или пароль"}));
                 }else {

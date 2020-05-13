@@ -1,0 +1,21 @@
+.fields_wrapper{
+    margin-top: 10pt;
+}
+
+.user_reg_button {
+    font-size: calc(4pt + 0.9vmin);
+    margin-top: 6%;
+    color: white;
+    background: #4F5352;
+    padding: .4em 1.5em; /* отступ от текста */
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user_reg_button :active { background: #626665; } /* при нажатии */
+
+.common_error_message{
+    color: #c41200;
+    font-weight: bold;
+}

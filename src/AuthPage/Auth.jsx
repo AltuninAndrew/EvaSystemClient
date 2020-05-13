@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Auth.module.css';
 import CustomInput from './CustomInputs/CustomInput'
 import {Field, reduxForm} from "redux-form";
-import {maxLengthCreator, required} from "../Validators/validators";
+import {emailValidator, maxLengthCreator, required} from "../Validators/validators";
 import {connect} from "react-redux";
 import {login, me} from "../Redux/Reducers/authReducer";
 import {Redirect} from "react-router-dom";
@@ -19,7 +19,7 @@ const MainLoginFormElement = (props) => {
                         name={"email"}
                         component={CustomInput}
                         className={classes.input}
-                        validate={[required, maxLength100]}
+                        validate={[required, maxLength100,emailValidator]}
                     />
                 </div>
 

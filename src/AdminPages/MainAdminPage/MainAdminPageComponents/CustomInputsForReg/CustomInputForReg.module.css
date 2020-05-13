@@ -1,0 +1,26 @@
+.input_control input{
+    font-family: Segoe UI,Arial, sans-serif;
+    color: black;
+    font-size: calc(10pt + 0.2vmin);
+    border: none;
+    border-bottom: 1px solid;
+    outline: none;
+    margin-bottom: 1.5vw;
+    width: 80%;
+}
+
+.input_control.error input{
+    border-bottom: 2px solid red;
+}
+
+.error_message{
+    color: #c41200;
+    font-size: calc(8pt + 0.2vmin);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 6pt;
+}
+
+.wrong_input{
+ color: #c41200;
+}

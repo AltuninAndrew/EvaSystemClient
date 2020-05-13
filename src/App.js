@@ -6,7 +6,7 @@ import AdminProfilePage from "./AdminPages/AdminProfilePage/AdminProfilePage";
 import CriterionsEditingPage from "./AdminPages/CrtiterionsEditingPage/CriterionsEditingPage";
 import MainAdminPageContainer from "./AdminPages/MainAdminPage/MainAdminPageContainer";
 import {connect} from "react-redux";
-import {deleteUserFromState, logout, me} from "./Redux/Reducers/authReducer";
+import {deleteUserFromState, me} from "./Redux/Reducers/authReducer";
 import MainUserPageContainer from "./UserPages/MainUserPage/MainUserPageContainer";
 
 

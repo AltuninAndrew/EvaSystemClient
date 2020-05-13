@@ -11,22 +11,6 @@
     margin-top: 17vh;
 }
 
-.user_reg_element{
-    margin-top: 3%;
-}
-
-.user_reg_button {
-    font-size: 10pt;
-    margin-top: 8%;
-    color: white;
-    background: #4F5352;
-    padding: .4em 1.5em; /* отступ от текста */
-    outline: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.user_reg_button :active { background: #626665; } /* при нажатии */
 
 .user_reg_header{
     color: dimgrey;
