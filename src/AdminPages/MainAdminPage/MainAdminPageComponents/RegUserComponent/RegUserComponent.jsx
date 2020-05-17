@@ -80,7 +80,6 @@ const afterSubmit = (result, dispatch) =>{
     dispatch(reset('regUser'));
 };
 
-
 const RegUserReduxForm = reduxForm({form: 'regUser', onSubmitSuccess: afterSubmit})(RegUserForm);
 
 const RegUserComponent = (props) => {

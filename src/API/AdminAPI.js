@@ -21,7 +21,7 @@ export const regUser = (jwt,email,password,firstName,middleName,lastName,positio
     });
 };
 
-export const deleteUser = (jwt,username) =>{
+export const deleteUser = (username,jwt) =>{
    return axios.delete(`https://localhost:44337/api/ClientData/delete_user/${username}`,{
        headers: {
            "accept": "*/*",
@@ -30,35 +30,8 @@ export const deleteUser = (jwt,username) =>{
    })
 };
 
-export const changeUserFirstName = (jwt,username,newFirstName) =>{
-    return axios.put(`https://localhost:44337/api/ClientData/change_first_name/${username}`, newFirstName,{
-        headers: {
-            "accept": "*/*",
-            "Authorization": `bearer ${jwt}`,
-        }
-    });
-};
-
-export const changeUserMiddleName = (jwt,username,newMiddleName) =>{
-    return axios.put(`https://localhost:44337/api/ClientData/change_middle_name/${username}`, newMiddleName,{
-        headers: {
-            "accept": "*/*",
-            "Authorization": `bearer ${jwt}`,
-        }
-    });
-};
-
-export const changeUserLastName = (jwt,username,newLastName) =>{
-    return axios.put(`https://localhost:44337/api/ClientData/change_last_name/${username}`, newLastName,{
-        headers: {
-            "accept": "*/*",
-            "Authorization": `bearer ${jwt}`,
-        }
-    });
-};
-
-export const changeUserEmail = (jwt,username,newEmail) =>{
-    return axios.put(`https://localhost:44337/api/ClientData/change_email/${username}`, newEmail,{
+export const changeUserFirstName = (username,jwt,newFirstName) =>{
+    return axios.put(`https://localhost:44337/api/ClientData/change_first_name/${username}`,{newFirstName},{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -67,16 +40,47 @@ export const changeUserEmail = (jwt,username,newEmail) =>{
     });
 };
 
-export const changeUserPosition = (jwt,username,newPosition) =>{
-    return axios.put(`https://localhost:44337/api/ClientData/change_position/${username}`, newPosition,{
+export const changeUserMiddleName = (username,jwt,newMiddleName) =>{
+    return axios.put(`https://localhost:44337/api/ClientData/change_middle_name/${username}`, {newMiddleName},{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
+            "Content-Type": "application/json",
         }
     });
 };
 
-export const changeUserPassword = (jwt,username,oldPassword,newPassword) =>{
+export const changeUserLastName = (username,jwt,newLastName) =>{
+    return axios.put(`https://localhost:44337/api/ClientData/change_last_name/${username}`, {newLastName},{
+        headers: {
+            "accept": "*/*",
+            "Authorization": `bearer ${jwt}`,
+            "Content-Type": "application/json",
+        }
+    });
+};
+
+export const changeUserEmail = (username,jwt,newEmail) =>{
+    return axios.put(`https://localhost:44337/api/ClientData/change_email/${username}`, {newEmail},{
+        headers: {
+            "accept": "*/*",
+            "Authorization": `bearer ${jwt}`,
+            "Content-Type": "application/json",
+        }
+    });
+};
+
+export const changeUserPosition = (username,jwt,newPosition) =>{
+    return axios.put(`https://localhost:44337/api/ClientData/change_position/${username}`,{newPosition},{
+        headers: {
+            "accept": "*/*",
+            "Authorization": `bearer ${jwt}`,
+            "Content-Type": "application/json",
+        }
+    });
+};
+
+export const changeUserPassword = (username,jwt,oldPassword,newPassword) =>{
     return axios.put(`https://localhost:44337/api/ClientData/change_password/${username}`,{oldPassword,newPassword},{
         headers: {
             "accept": "*/*",
@@ -86,7 +90,7 @@ export const changeUserPassword = (jwt,username,oldPassword,newPassword) =>{
     });
 };
 
-export const getUsersForInteract = (jwt,username) => {
+export const getUsersForInteract = (username,jwt,) => {
     return axios.get(`https://localhost:44337/api/ClientData/get_users_for_interact/${username}`,{
         headers: {
             "accept": "*/*",
@@ -95,14 +99,14 @@ export const getUsersForInteract = (jwt,username) => {
     });
 };
 
-export const addCommunicationBtwUsers = (jwt,username,interectedUsersName) =>{
+export const addCommunicationBtwUsers = (username,jwt,interectedUsersName) =>{
     return axios.post(`https://localhost:44337/api/ClientData/add_interected_users/${username}`,interectedUsersName,{
         "accept": "*/*",
         "Authorization": `bearer ${jwt}`,
     })
 };
 
-export const deleteCommunicationBtwUsers = (jwt,username,interectedUserName) =>{
+export const deleteCommunicationBtwUsers = (username,jwt,interectedUserName) =>{
     return axios.delete(`https://localhost:44337/api/ClientData/delete_interected_users/${username}`,{
         headers: {
             "accept": "*/*",

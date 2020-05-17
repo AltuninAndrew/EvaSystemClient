@@ -43,23 +43,23 @@
 }
 
 .user_info_wrapper{
-    margin-left: 190pt;
-    margin-top: -140pt;
+    margin-left: 175pt;
+    margin-top: -135pt;
 }
 
 .user_name_txt{
     color: black;
     font-weight: bold;
-    font-size: x-large;
+    font-size: 16pt
 }
 
 .user_info_txt{
-    font-size: larger;
+    font-size: 13pt;
     margin-bottom: 4pt;
 }
 
 .user_rating_txt{
-    font-size: larger;
+    font-size: 13pt;
 
 }
 
@@ -99,19 +99,25 @@
     margin-bottom: 5pt;
 }
 
-.editing_personal_data{
 
-}
-
-.editing_pass_data{
-
-}
-
-.editing_pass_data button{
+.editing_pass_data_btn{
     margin-top: 8pt;
     margin-left: 6pt;
     width: 75%;
     color: white;
+    background: #1172c4;
+    padding: .4em 1.5em; /* отступ от текста */
+    outline: none;
+    border-radius: 5px;
+}
+
+.delete_user_btn{
+    display: block;
+    text-align: center;
+    color: white;
+    width: 32%;
+    margin-left: 23.9em;
+    margin-top: -65pt;
     background: #1172c4;
     padding: .4em 1.5em; /* отступ от текста */
     outline: none;
@@ -125,7 +131,7 @@
 
 .edit_state_btn{
     cursor: pointer;
-    margin-left: 190pt;
+    margin-left: 175pt;
     margin-top: 10pt;
     background: transparent;
     color: #1172c4;
