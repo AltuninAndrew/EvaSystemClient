@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import MainAdminPage from "./MainAdminPage";
-import {getUsersFromServer, regNewUserInServer} from "../../Redux/Reducers/adminReducer";
+import {getUsersFromServer, regNewUserInServer} from "../../Redux/Reducers/mainAdminPageReducer";
 import React, {useEffect, useState} from "react";
 import {Redirect} from "react-router-dom";
 
@@ -18,8 +18,6 @@ let mapStateToProps = (state) =>{
 
 const MainAdminPageContainerAPI = (props) =>{
 
-
-    console.log("das");
     useEffect(() => {
         props.getUsersFromServer(props.jwt);
     }, []);
@@ -29,11 +27,14 @@ const MainAdminPageContainerAPI = (props) =>{
         return <Redirect to={"/user"}/>
     }
 
-    if(props.userRole==="admin")
-    {
-        return <MainAdminPage users={props.users} getUsersFromServer={props.getUsersFromServer}
-                              regNewUserInServer ={props.regNewUser} jwt={props.jwt}/>
+    if(props.userRole==="admin"){
+        return <MainAdminPage
+            users={props.users}
+            regNewUserInServer={props.regNewUser}
+            jwt={props.jwt}
+        />
     }
+
 
     return <div>
     </div>

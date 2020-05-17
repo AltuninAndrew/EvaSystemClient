@@ -4,7 +4,6 @@ import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import {withRouter} from "react-router-dom"
 import {Rating} from '@material-ui/lab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box'
@@ -199,6 +198,4 @@ const AdminProfilePage = props => {
     );
 };
 
-let WT = withRouter(AdminProfilePage);
-
-export default WT;
+export default AdminProfilePage;

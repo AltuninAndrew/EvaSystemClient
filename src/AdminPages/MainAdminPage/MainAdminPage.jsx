@@ -45,8 +45,11 @@ const MainAdminPage = (props) => {
                             Регистрация пользователей
                         </div>
                         <Paper className={material_classes.paper_1}>
-                            <RegUserComponent getUsersFromServer={props.getUsersFromServer}
-                                              regNewUserInServer={props.regNewUserInServer} jwt={props.jwt}/>
+                            <RegUserComponent
+                                regNewUserInServer={props.regNewUserInServer}
+                                jwt={props.jwt}
+                            />
+
                         </Paper>
                     </Grid>
 

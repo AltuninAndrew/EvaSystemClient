@@ -109,10 +109,4 @@ export const login = (email,password) => (dispatch) =>{
         });
 };
 
-export const logout = () => (dispatch) =>{
-    localStorage.setItem("userJWT","");
-    dispatch(setAuthUserData(null,false,null,null));
-    dispatch(setUserInfo(null,null,null,null,null));
-};
-
 export default authReducer;

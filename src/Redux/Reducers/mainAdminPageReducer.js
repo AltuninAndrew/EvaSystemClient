@@ -7,7 +7,7 @@ let initialState = {
     users: []
 };
 
-const adminReducer = (state = initialState, action) => {
+const mainAdminPageReducer = (state = initialState, action) => {
 
     if (action.type === SET_USERS) {
         let newUsers = action.users.map((user) => ({
@@ -31,7 +31,6 @@ const adminReducer = (state = initialState, action) => {
 
 };
 
-
 export const setUsers = (users) => ({type: SET_USERS, users: users});
 
 export const getUsersFromServer = (jwt) => {
@@ -41,7 +40,6 @@ export const getUsersFromServer = (jwt) => {
         );
     }
 };
-
 
 export const regNewUserInServer = (jwt,email,password,firstName,middleName,lastName,position) => (dispatch)=> {
     AdminAPI.regUser(jwt,email,password,firstName,middleName,lastName,position)
@@ -62,5 +60,5 @@ export const regNewUserInServer = (jwt,email,password,firstName,middleName,lastN
 
 };
 
-export default adminReducer;
+export default mainAdminPageReducer;
 

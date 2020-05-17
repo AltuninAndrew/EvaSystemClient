@@ -2,13 +2,12 @@ import React from 'react';
 import classes from './App.module.css';
 import Auth from './AuthPage/Auth'
 import {Redirect, Route} from "react-router-dom";
-import AdminProfilePage from "./AdminPages/AdminProfilePage/AdminProfilePage";
+import AdminProfilePageContainer from "./AdminPages/AdminProfilePage/AdminProfilePageContainer";
 import CriterionsEditingPage from "./AdminPages/CrtiterionsEditingPage/CriterionsEditingPage";
 import MainAdminPageContainer from "./AdminPages/MainAdminPage/MainAdminPageContainer";
 import {connect} from "react-redux";
 import {deleteUserFromState, me} from "./Redux/Reducers/authReducer";
 import MainUserPageContainer from "./UserPages/MainUserPage/MainUserPageContainer";
-
 
 const Redirector = (props) =>{
     if(props.isAuth===false){
@@ -46,7 +45,7 @@ const App = (props) => {
             <Redirector isAuth={props.isAuth} me={props.me} jwt={props.jwt} userRole={props.userRole}/>
             <Route exact path={["/", "/auth"]} component={Auth}/>
             <Route exact path='/admin' render={() => <MainAdminPageContainer/>}/>
-            <Route exact path='/admin/profile_page/:userId' component={AdminProfilePage}/>
+            <Route exact path='/admin/profile_page/:userId' component={AdminProfilePageContainer}/>
             <Route exact path='/admin/criterions' component={CriterionsEditingPage}/>
             <Route exact path={'/user'} render={() => <MainUserPageContainer/>}/>
         </div>
