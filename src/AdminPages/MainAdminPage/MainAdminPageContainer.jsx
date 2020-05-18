@@ -13,9 +13,6 @@ let mapStateToProps = (state) =>{
     };
 };
 
-
-
-
 const MainAdminPageContainerAPI = (props) =>{
 
     useEffect(() => {
@@ -34,7 +31,6 @@ const MainAdminPageContainerAPI = (props) =>{
             jwt={props.jwt}
         />
     }
-
 
     return <div>
     </div>

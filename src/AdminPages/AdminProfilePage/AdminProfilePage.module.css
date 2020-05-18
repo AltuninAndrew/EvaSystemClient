@@ -50,7 +50,7 @@
 .user_name_txt{
     color: black;
     font-weight: bold;
-    font-size: 16pt
+    font-size: 15pt
 }
 
 .user_info_txt{
@@ -115,14 +115,29 @@
     display: block;
     text-align: center;
     color: white;
-    width: 32%;
-    margin-left: 23.9em;
-    margin-top: -65pt;
+    width: 33.6%;
+    margin-left: 23.6em;
+    margin-top: -70pt;
     background: #1172c4;
     padding: .4em 1.5em; /* отступ от текста */
     outline: none;
     border-radius: 5px;
 }
+
+
+.delete_user_btn:disabled{
+    display: block;
+    text-align: center;
+    color: white;
+    width: 33.6%;
+    margin-left: 23.6em;
+    margin-top: -70pt;
+    background: #c4c4c1;
+    padding: .4em 1.5em; /* отступ от текста */
+    outline: none;
+    border-radius: 5px;
+}
+
 
 
 .editing_data_header_txt{

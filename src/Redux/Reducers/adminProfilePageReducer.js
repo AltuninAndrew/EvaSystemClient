@@ -12,9 +12,14 @@ const SET_USER_FIRST_NAME = "SET-USER-FIRST-NAME";
 const SET_USER_LAST_NAME = "SET-USER-LAST-NAME";
 const SET_USER_MIDDLE_NAME = "SET-USER-MIDDLE-NAME";
 const SET_USER_EMAIL = "SET-USER-EMAIL";
-
+const SET_USER_POSITION = "SET-USER-POSITION";
+const SET_USER_NAME = "SET-USER-NAME";
+const RESET_USER = "RESET-USER";
+const DELETE_INTERACT_USER = "DELETE-INTERACT-USER";
+const DELETE_USER_FOR_INTERACT ="DELETE-USER-FOR-INTERACT";
 
 let initialState = {
+    isUserDeleted:false,
     currentUser: {
         username: "",
         firstName: "",
@@ -57,7 +62,13 @@ const adminProfilePageReducer = (state = initialState, action) => {
         case DELETE_USER:
             return {
                 ...state,
-                ...initialState
+                ...initialState,
+                isUserDeleted:true,
+            };
+        case RESET_USER:
+            return {
+                ...state,
+                ...initialState,
             };
         case SET_USER_FIRST_NAME:
             return {
@@ -83,6 +94,41 @@ const adminProfilePageReducer = (state = initialState, action) => {
                     middleName:action.data.newMiddleName,
                 }
             };
+        case SET_USER_POSITION:
+            return {
+                ...state,
+                currentUser: {
+                    ...state.currentUser,
+                    position:action.data.newPosition,
+                }
+            };
+        case SET_USER_EMAIL:
+            return {
+                ...state,
+                currentUser: {
+                    ...state.currentUser,
+                    email:action.data.newEmail,
+                }
+            };
+        case SET_USER_NAME:
+            return {
+                ...state,
+                currentUser: {
+                    ...state.currentUser,
+                    username:action.data.newUserName,
+                }
+            };
+        case DELETE_INTERACT_USER:
+            return {
+                ...state,
+                interectedUsers: state.interectedUsers.filter(n => n.username !== action.data.username),
+            };
+        case DELETE_USER_FOR_INTERACT:
+
+            return {
+                ...state,
+                usersForInteract: state.usersForInteract.filter(n => n.username !== action.data.username),
+            };
         default:
             return state;
     }
@@ -94,16 +140,30 @@ const setCurrentUserData = (username, firstName, middleName, lastName, position,
 const setCurrentUserRating = (commonRating, scorePerCriterion) =>
     ({type: SET_CURRENT_USER_RATING, data: {commonRating, scorePerCriterion}});
 
+
 const setUserFirstName = (newFirstName) => ({type: SET_USER_FIRST_NAME, data: {newFirstName}});
+
 const setUserLastName = (newLastName) => ({type: SET_USER_LAST_NAME, data: {newLastName}});
+
 const setUserMiddleName = (newMiddleName) => ({type: SET_USER_MIDDLE_NAME, data: {newMiddleName}});
+
 const setUserEmail = (newEmail) => ({type: SET_USER_EMAIL, data: {newEmail}});
+
+const setUserPosition = (newPosition) => ({type: SET_USER_POSITION, data: {newPosition}});
+
+const setUserName = (newUserName) => ({type: SET_USER_NAME, data: {newUserName}});
+
+const resetUser = () => ({type: RESET_USER});
 
 const deleteUserFromState = () => ({type: DELETE_USER});
 
 const setInterectedUsers = (users) => ({type: SET_INTERECTED_USERS, data: users});
 
 const setUsersForInteract = (users) => ({type: SET_USERS_FOR_INTERACT, data: users});
+
+const deleteInteractedUser = (username) =>({type:DELETE_INTERACT_USER, data:{username}});
+
+const deleteUserForInteract = (username) =>({type:DELETE_USER_FOR_INTERACT, data:{username}});
 
 export const getUserInfoFromServer = (username, jwt) => (dispatch) => {
     AuthAPI.getUserInfo(username, jwt)
@@ -140,7 +200,7 @@ export const getInterectedUsersFromServer = (username, jwt) => (dispatch) => {
             dispatch(setInterectedUsers(response.data));
         })
         .catch(error => {
-            console.log(error);
+            dispatch(setInterectedUsers([]));
         })
 };
 
@@ -156,17 +216,16 @@ export const getUsersForInteractFromServer = (username, jwt) => (dispatch) => {
 
 export const changeUserDataOnServer = (username, jwt, changeRequest) => (dispatch) => {
 
+
     if (changeRequest.firstName) {
         AdminAPI.changeUserFirstName(username, jwt, changeRequest.firstName)
             .then(response => {
-                console.log(response.data);
                 dispatch(setUserFirstName(changeRequest.firstName));
-
             })
             .catch(error => {
-                if (error.data) {
+                if (error.response.data) {
                     //заменить на stopConfirm
-                    console.log(error.data);
+                    alert("Ответ с сервера: "+ error.response.data);
                 }
             });
     }
@@ -174,12 +233,12 @@ export const changeUserDataOnServer = (username, jwt, changeRequest) => (dispatc
     if (changeRequest.lastName) {
         AdminAPI.changeUserLastName(username, jwt, changeRequest.lastName)
             .then(response => {
-                console.log(response.data)
+                dispatch(setUserLastName(changeRequest.lastName))
             })
             .catch(error => {
-                if (error.data) {
+                if (error.response.data) {
                     //заменить на stopConfirm
-                    console.log(error.data);
+                    alert("Ответ с сервера: "+ error.response.data);
                 }
             });
     }
@@ -187,12 +246,12 @@ export const changeUserDataOnServer = (username, jwt, changeRequest) => (dispatc
     if (changeRequest.middleName) {
         AdminAPI.changeUserMiddleName(username, jwt, changeRequest.middleName)
             .then(response => {
-                console.log(response.data)
+                dispatch(setUserMiddleName(changeRequest.middleName))
             })
             .catch(error => {
-                if (error.data) {
+                if (error.response.data) {
                     //заменить на stopConfirm
-                    console.log(error.data);
+                    alert("Ответ с сервера: "+ error.response.data);
                 }
             })
     }
@@ -200,12 +259,12 @@ export const changeUserDataOnServer = (username, jwt, changeRequest) => (dispatc
     if (changeRequest.position) {
         AdminAPI.changeUserPosition(username, jwt, changeRequest.position)
             .then(response => {
-                console.log(response.data)
+                dispatch(setUserPosition(changeRequest.position))
             })
             .catch(error => {
-                if (error.data) {
+                if (error.response.data) {
                     //заменить на stopConfirm
-                    console.log(error.data);
+                    alert("Ответ с сервера: "+ error.response.data);
                 }
             })
     }
@@ -213,12 +272,13 @@ export const changeUserDataOnServer = (username, jwt, changeRequest) => (dispatc
     if (changeRequest.email) {
         AdminAPI.changeUserEmail(username, jwt, changeRequest.email)
             .then(response => {
-                console.log(response.data)
+                dispatch(setUserEmail(changeRequest.email));
+                dispatch(setUserName(changeRequest.email.split('@')[0]));
             })
             .catch(error => {
-                if (error.data) {
+                if (error.response.data) {
                     //заменить на stopConfirm
-                    console.log(error.data);
+                    alert("Ответ с сервера: "+ error.response.data);
                 }
             })
     }
@@ -226,33 +286,42 @@ export const changeUserDataOnServer = (username, jwt, changeRequest) => (dispatc
     if (changeRequest.newPassword) {
         AdminAPI.changeUserPassword(username, jwt, changeRequest.oldPassword, changeRequest.newPassword)
             .then(response => {
-                console.log(response.data)
+                alert("Пароль успешно изменён");
             })
             .catch(error => {
-                if (error.data) {
+                if (error.response.data) {
                     //заменить на stopConfirm
-                    console.log(error.data);
+                    alert("Ответ с сервера: "+ error.response.data);
                 }
             })
     }
-
 };
 
-export const deleteUserOnServer = (username, jwt) => (dispatch) => {
-    AdminAPI.deleteUser(username, jwt)
-        .then(response => {
-            console.log(response.data);
-            dispatch(deleteUserFromState());
-        })
-        .catch(error => {
-            console.log(error);
-        });
+export const deleteUserOnServer = (username, jwt,adminUserName) => (dispatch) => {
+
+    if(username!==adminUserName){
+        AdminAPI.deleteUser(username, jwt)
+            .then(response => {
+                console.log(response.data);
+                dispatch(deleteUserFromState());
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
 };
 
-export const addCommunicationBtwUsers = (username, jwt, interactUserName) => (dispatch) => {
-    AdminAPI.addCommunicationBtwUsers(username, jwt, [interactUserName])
+export const addCommunicationBtwUsersOnServer = (username, jwt, interactUserName) => (dispatch) => {
+
+    let payload = {
+        interactedUsersName:[interactUserName]
+    };
+
+    AdminAPI.addCommunicationBtwUsers(username, jwt, payload)
         .then(response => {
             console.log(response.data);
+
+            dispatch(deleteUserForInteract(interactUserName));
 
             CommonAPI.getInterectedUsers(username, jwt)
                 .then(response => {
@@ -262,13 +331,6 @@ export const addCommunicationBtwUsers = (username, jwt, interactUserName) => (di
                     console.log(error);
                 });
 
-            AdminAPI.getUsersForInteract(username, jwt)
-                .then(response => {
-                    dispatch(setUsersForInteract(response.data));
-                })
-                .catch(error => {
-                    console.log(error);
-                });
 
         })
         .catch(error => {
@@ -279,17 +341,12 @@ export const addCommunicationBtwUsers = (username, jwt, interactUserName) => (di
 };
 
 export const deleteCommunicationBtwUsersOnServer = (username, jwt, interactUserName) => (dispatch) => {
+
     AdminAPI.deleteCommunicationBtwUsers(username, jwt, interactUserName)
         .then(response => {
             console.log(response.data);
 
-            CommonAPI.getInterectedUsers(username, jwt)
-                .then(response => {
-                    dispatch(setInterectedUsers(response.data));
-                })
-                .catch(error => {
-                    console.log(error);
-                });
+            dispatch(deleteInteractedUser(interactUserName));
 
             AdminAPI.getUsersForInteract(username, jwt)
                 .then(response => {
@@ -306,5 +363,12 @@ export const deleteCommunicationBtwUsersOnServer = (username, jwt, interactUserN
         });
 };
 
+export const setUserNameInState = (UserName) => (dispatch) =>{
+    dispatch(setUserName(UserName));
+};
+
+export const resetUserInState = ()=> (dispatch)=>{
+    dispatch(resetUser());
+};
 
 export default adminProfilePageReducer;

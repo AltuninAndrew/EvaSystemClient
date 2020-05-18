@@ -3,9 +3,10 @@ import React, {useEffect} from "react";
 import {Redirect, withRouter} from "react-router-dom";
 import AdminProfilePage from "./AdminProfilePage";
 import {
-    changeUserDataOnServer,
-    getCurrentUserRatingFromServer,
-    getUserInfoFromServer
+    addCommunicationBtwUsersOnServer,
+    changeUserDataOnServer, deleteCommunicationBtwUsersOnServer, deleteUserOnServer,
+    getCurrentUserRatingFromServer, getInterectedUsersFromServer,
+    getUserInfoFromServer, getUsersForInteractFromServer, resetUserInState, setUserNameInState
 } from "../../Redux/Reducers/adminProfilePageReducer";
 
 let mapStateToProps = (state) => {
@@ -21,6 +22,10 @@ let mapStateToProps = (state) => {
         avatarImage:state.profilePage.currentUser.avatarImage,
         position:state.profilePage.currentUser.position,
         email:state.profilePage.currentUser.email,
+        username:state.profilePage.currentUser.username,
+        isUserDeleted: state.profilePage.isUserDeleted,
+        interectedUsers: state.profilePage.interectedUsers,
+        usersForInteract:state.profilePage.usersForInteract,
     };
 };
 
@@ -29,8 +34,11 @@ const AdminProfilePageContainerAPI = (props) => {
 
     useEffect(() => {
         let userName = props.match.params.userId;
+        props.setUserNameInState(userName);
         props.getUserInfoFromServer(userName,props.jwt);
         props.getCurrentUserRatingFromServer(userName,props.jwt);
+        props.getInterectedUsersFromServer(userName,props.jwt);
+        props.getUsersForInteractFromServer(userName,props.jwt);
     }, []);
 
 
@@ -38,7 +46,19 @@ const AdminProfilePageContainerAPI = (props) => {
         return <Redirect to={"/user"}/>
     }
 
+
+    if((props.username)&&(props.username !== props.match.params.userId))
+    {
+        return <Redirect to={`/admin/profile_page/${props.username}`}/>
+    }
+
+    if(props.isUserDeleted){
+        props.resetUserInState();
+        return <Redirect to={'/admin'}/>
+    }
+
     if (props.userRole === "admin") {
+
         return <AdminProfilePage
             scorePerCriterion={props.currentUserRating.scorePerCriterion}
             lastName={props.lastName}
@@ -51,6 +71,12 @@ const AdminProfilePageContainerAPI = (props) => {
             changeUserData={props.changeUserDataOnServer}
             jwt={props.jwt}
             username={props.match.params.userId}
+            adminUserName={props.adminUserName}
+            deleteUser={props.deleteUserOnServer}
+            usersForInteract={props.usersForInteract}
+            interectedUsers={props.interectedUsers}
+            addCommunication={props.addCommunicationBtwUsersOnServer}
+            deleteCommunication={props.deleteCommunicationBtwUsersOnServer}
         />
     }
 
@@ -62,7 +88,14 @@ const AdminProfilePageContainerAPI = (props) => {
 const AdminProfilePageContainer = connect(mapStateToProps, {
     getUserInfoFromServer,
     getCurrentUserRatingFromServer,
-    changeUserDataOnServer
+    changeUserDataOnServer,
+    setUserNameInState,
+    deleteUserOnServer,
+    resetUserInState,
+    getInterectedUsersFromServer,
+    getUsersForInteractFromServer,
+    addCommunicationBtwUsersOnServer,
+    deleteCommunicationBtwUsersOnServer,
 })(AdminProfilePageContainerAPI);
 
 let AdminProfilePageContainerWR = withRouter(AdminProfilePageContainer);

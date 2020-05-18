@@ -15,9 +15,19 @@ const useStyles = makeStyles((theme) => ({
 
 const UserElementInList = props => {
     const materialClasses = useStyles();
+
+    const onAddCommunication = ()=>{
+        props.addCommunication(props.userName,props.jwt,props.interactUserName);
+    };
+
+
+    const onDeleteCommunication = ()=>{
+        props.deleteCommunication(props.userName,props.jwt,props.interactUserName);
+    };
+
     return (
         <div className={classes.user_in_list_element}>
-            <Avatar variant="square" className={materialClasses.small} src={props.userAvatar}/>
+            <Avatar variant="square" className={materialClasses.small} src={`data:image/jpeg;base64,${props.avatarImage}`}/>
             <div className={classes.user_in_list_data_wrapper}>
                 <div className={classes.user_in_list_full_name}>
                     {props.userFullName}
@@ -29,9 +39,9 @@ const UserElementInList = props => {
 
                 <div className={classes.action_with_user}>
                     {props.elementForAdd ? (
-                        <AddCircleIcon className={classes.add_icon}/>
+                        <AddCircleIcon className={classes.add_icon} onClick={onAddCommunication}/>
                     ) : (
-                        <RemoveCircleIcon className={classes.remove_icon}/>
+                        <RemoveCircleIcon className={classes.remove_icon} onClick={onDeleteCommunication}/>
                     )}
                 </div>
             </div>
@@ -41,6 +51,37 @@ const UserElementInList = props => {
 
 
 const UserConnectionsEditComponent = props => {
+
+    let usersForInteractElements = props.usersForInteract
+        .map((user,index) => (
+            <UserElementInList
+                key={index}
+                userFullName={`${user.lastName} ${user.firstName} ${user.middleName}`}
+                userPosition={user.position}
+                avatarImage={user.avatarImage}
+                interactUserName={user.username}
+                userName={props.username}
+                addCommunication={props.addCommunication}
+                jwt={props.jwt}
+                elementForAdd={true}
+            />)
+        );
+
+    let interactedUsersElements = props.interectedUsers
+        .map((user,index) => (
+            <UserElementInList
+                key={index}
+                userFullName={`${user.lastName} ${user.firstName} ${user.middleName}`}
+                userPosition={user.position}
+                avatarImage={user.avatarImage}
+                interactUserName={user.username}
+                userName={props.username}
+                deleteCommunication={props.deleteCommunication}
+                jwt={props.jwt}
+                elementForAdd={false}
+            />)
+        );
+
     return (
         <div className={props.className}>
             <div className={classes.main_header}>Редактирование связей</div>
@@ -53,67 +94,7 @@ const UserConnectionsEditComponent = props => {
                     </div>
 
                     <div className={classes.user_list_block_wrapper}>
-                        <UserElementInList
-                            userFullName="Петров Алексей Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={true}
-                        />
-                        <UserElementInList
-                            userFullName="Петров Алексей Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={true}
-                        />
-                        <UserElementInList
-                            userFullName="Петров Алексей Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={true}
-                        />
-                        <UserElementInList
-                            userFullName="Петров Алексей Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={true}
-                        />
-                        <UserElementInList
-                            userFullName="Петров Алексей Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={true}
-                        />
-                        <UserElementInList
-                            userFullName="Петров Алексей Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={true}
-                        />
-                        <UserElementInList
-                            userFullName="Петров Алексей Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={true}
-                        />
-                        <UserElementInList
-                            userFullName="Петров Алексей Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={true}
-                        />
-                        <UserElementInList
-                            userFullName="Петров Алексей Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={true}
-                        />
-                        <UserElementInList
-                            userFullName="Петров Алексей Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={true}
-                        />
-
+                        {usersForInteractElements}
                     </div>
 
                 </div>
@@ -124,49 +105,7 @@ const UserConnectionsEditComponent = props => {
                     </div>
 
                     <div className={classes.user_list_block_wrapper}>
-                        <UserElementInList
-                            userFullName="Иванов Антон Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={false}
-                        />
-                        <UserElementInList
-                            userFullName="Иванов Антон Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={false}
-                        />
-                        <UserElementInList
-                            userFullName="Иванов Антон Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={false}
-                        />
-                        <UserElementInList
-                            userFullName="Иванов Антон Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={false}
-                        />
-                        <UserElementInList
-                            userFullName="Иванов Антон Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={false}
-                        />
-                        <UserElementInList
-                            userFullName="Иванов Антон Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={false}
-                        />
-                        <UserElementInList
-                            userFullName="Иванов Антон Петрович"
-                            userPosition="Разработчик"
-                            userAvatar="https://my.roomz.asia/avatar/2019/10/12/1570872461.png"
-                            elementForAdd={false}
-                        />
-
+                        {interactedUsersElements}
                     </div>
 
                 </div>

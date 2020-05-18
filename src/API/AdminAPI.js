@@ -100,18 +100,21 @@ export const getUsersForInteract = (username,jwt,) => {
 };
 
 export const addCommunicationBtwUsers = (username,jwt,interectedUsersName) =>{
-    return axios.post(`https://localhost:44337/api/ClientData/add_interected_users/${username}`,interectedUsersName,{
-        "accept": "*/*",
-        "Authorization": `bearer ${jwt}`,
-    })
+    return axios.post(`https://localhost:44337/api/ClientData/add_interected_users/${username}`, interectedUsersName,{
+        headers: {
+            "accept": "*/*",
+            "Authorization": `bearer ${jwt}`,
+            "Content-Type": "application/json",
+        }
+    });
 };
 
-export const deleteCommunicationBtwUsers = (username,jwt,interectedUserName) =>{
+export const deleteCommunicationBtwUsers = (username,jwt,interactedUserName) =>{
     return axios.delete(`https://localhost:44337/api/ClientData/delete_interected_users/${username}`,{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
         },
-        data: {interectedUserName}
+        data:{interactedUserName}
     });
 };

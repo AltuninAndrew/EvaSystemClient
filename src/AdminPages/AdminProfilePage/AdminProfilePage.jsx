@@ -11,7 +11,6 @@ import Avatar from '@material-ui/core/Avatar';
 import {withStyles} from "@material-ui/styles";
 import UserConnectionsEditComponent from "./UserEditConnectionsComponent/UserEditConntectionsComponent";
 import {Field, reduxForm, reset} from "redux-form";
-import CustomInputForReg from "../MainAdminPage/MainAdminPageComponents/CustomInputsForReg/CustomInputForReg";
 
 const useStyles = makeStyles((theme) => ({
     paper_1: {
@@ -128,6 +127,7 @@ const EditDataForm = props =>{
 
 const afterSubmitForm = (result, dispatch) =>{
     dispatch(reset('editDataUser'));
+
 };
 
 const EditDataUserReduxForm = reduxForm({form: 'editDataUser', onSubmitSuccess: afterSubmitForm})(EditDataForm);
@@ -155,14 +155,17 @@ const EditDataElement = props => {
     };
 
     const onUserDelete = () =>{
-
+        props.deleteUser(props.username,props.jwt,props.adminUserName);
     };
 
     return (
         <div>
             <div className={classes.header_editing_block}>Редактирование пользователя</div>
             <EditDataUserReduxForm onSubmit={onSubmitEditData}/>
-            <button onClick={onUserDelete} className={classes.delete_user_btn}>Удалить аккаунт</button>
+            {props.username!==props.adminUserName ?
+                <button onClick={onUserDelete} className={classes.delete_user_btn}>Удалить аккаунт</button>:
+                <button className={classes.delete_user_btn} disabled={true}>Удалить аккаунт</button>
+            }
         </div>
     );
 };
@@ -191,7 +194,16 @@ const ManagerPanel = props => {
                     changeUserData={props.changeUserData}
                     jwt={props.jwt}
                     username={props.username}
-                />):(<UserConnectionsEditComponent userFirstName="Иван"/>)}
+                    adminUserName={props.adminUserName}
+                    deleteUser={props.deleteUser}
+                />):(<UserConnectionsEditComponent
+                    usersForInteract={props.usersForInteract}
+                    interectedUsers={props.interectedUsers}
+                    addCommunication={props.addCommunication}
+                    deleteCommunication={props.deleteCommunication}
+                    username={props.username}
+                    jwt={props.jwt}
+                />)}
             </div>
         </div>
     );
@@ -240,6 +252,12 @@ const AdminProfilePage = props => {
                                 changeUserData={props.changeUserData}
                                 jwt={props.jwt}
                                 username={props.username}
+                                adminUserName={props.adminUserName}
+                                deleteUser={props.deleteUser}
+                                interectedUsers={props.interectedUsers}
+                                usersForInteract={props.usersForInteract}
+                                deleteCommunication={props.deleteCommunication}
+                                addCommunication={props.addCommunication}
                             />
                         </Paper>
                     </Grid>

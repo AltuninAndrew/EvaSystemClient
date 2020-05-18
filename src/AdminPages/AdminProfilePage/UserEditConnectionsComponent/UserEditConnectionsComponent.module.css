@@ -49,12 +49,13 @@
 
 .user_in_list_full_name{
     color: black;
-    font-size: 12pt;
+    font-size: 10pt;
 }
 
 .user_in_list_pos{
     color: black;
     font-size: 11pt;
+    margin-top: 2pt;
 }
 
 .action_with_user{
