@@ -83,6 +83,10 @@
 .input_weight{
     text-align: center;
 }
+.input_weight:disabled{
+    background-color: white;
+    border: 0.5pt solid grey;
+}
 
 .criterion_element_help_header{
     margin-top: 10pt;
@@ -108,7 +112,6 @@
     font-size: calc(9pt + 0.2vw);
     font-family: "Segoe UI","Arial",sans-serif;
     font-weight: normal;
-    color: #373B3A;
     padding: 2pt;
 }
 

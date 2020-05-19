@@ -1,17 +1,65 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './CritertionsEditorComponent.module.css';
 import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import {Field, reset, reduxForm} from "redux-form";
+import {addCriterions} from "../../../API/AdminAPI";
+import {required} from "../../../Validators/validators";
 
+
+const AddCritForm = (props) =>{
+    return(
+        <form className={classes.add_crit_element_wrapper} onSubmit={props.handleSubmit}>
+            <Field
+                className={classes.criterion_name_input_field}
+                placeholder="Название"
+                component={"input"}
+                name={"critName"}
+                validate={[required]}
+            />
+
+            <Field
+                className={classes.criterion_name_input_field}
+                type={"number"}
+                placeholder="1.0"
+                component={"input"}
+                step="1" min="1" max="5"
+                name={"critWeight"}
+                validate={[required]}
+            />
+
+            <button style={{background:"none",color:"#373B3A",padding:0,border:"none", outline:"none",width:0}}>
+                <AddCircleIcon className={classes.add_crit_icon}/>
+            </button>
+        </form>
+    )
+};
+
+const afterSubmit = (result, dispatch) =>{
+    dispatch(reset('addCriterion'));
+};
+
+const AddCritReduxForm = reduxForm({form: 'addCriterion', onSubmitSuccess: afterSubmit})(AddCritForm);
 
 const CriterionsEditorComponent = props => {
 
     let [criterionsEditorLabel, setCriterionsEditorLabel] = useState('Пожалуйста, выберите должность');
     let [initState, setInitState] = useState(true);
+    let [currentCriterions, setCurrentCriterions] = useState([]);
+    let [currentPositionName,setCurrentPositionName] = useState("");
 
     const PositionElement = props => {
-
         const clickAction = () => {
+            let crits = props.positions.find(e => e.positionName === props.positionName).criterions
+                .map((crit, index) => (
+                    <CriterionElement
+                        key={index}
+                        critName={crit.name}
+                        critWeight={crit.weight}
+                    />)
+                );
+            setCurrentCriterions(crits);
+            setCurrentPositionName(props.positionName);
             setCriterionsEditorLabel("Настройка критериев для должности: " + props.positionName.toLowerCase());
             setInitState(false);
         };
@@ -29,28 +77,48 @@ const CriterionsEditorComponent = props => {
                     {props.critName}
                     <DeleteForeverRoundedIcon className={classes.delete_crit_icon}/>
                 </div>
-                <input className={classes.input_weight} type="number" placeholder="1.0" step="1" min="1" max="5"/>
+                <input className={classes.input_weight} type="number" defaultValue={props.critWeight} disabled={true} step="1" min="1" max="5"/>
             </div>
         );
     };
 
     const AddCriterionElement = props => {
+
+        const onSubmitForm =(formData)=>{
+            props.addCriterion(props.jwt,currentPositionName,formData.critName,formData.critWeight);
+        };
+
         return (
-            <div className={classes.add_crit_element_wrapper}>
-                <input className={classes.criterion_name_input_field} placeholder="Название"/>
-                <input className={classes.criterion_name_input_field} type="number" placeholder="1.0" step="1" min="1" max="5"/>
-                <AddCircleIcon className={classes.add_crit_icon}/>
+            <div>
+                <AddCritReduxForm onSubmit={onSubmitForm}/>
             </div>
         );
     };
 
     const CriterionsEditor = () => {
+
+        useEffect(() => {
+            if(props.isCritsChanged){
+                let crits = props.positions.find(e => e.positionName === currentPositionName).criterions
+                    .map((crit, index) => (
+                        <CriterionElement
+                            key={index}
+                            critName={crit.name}
+                            critWeight={crit.weight}
+                        />)
+                    );
+                setCurrentCriterions(crits);
+                props.offIsCritChange();
+            }
+        });
+
+
+
         return (
             <div>
                 <div className={classes.criterions_editor_header}>
                     {criterionsEditorLabel}
                 </div>
-
                 {initState ?
                     (
                         <div>
@@ -66,15 +134,13 @@ const CriterionsEditorComponent = props => {
                                 </div>
                             </div>
                             <div className={classes.criterions_list_wrapper}>
-                                <CriterionElement critName='Продуктивность'/>
-                                <CriterionElement critName='Скорость работы'/>
-                                <CriterionElement critName='Ответсвенность'/>
-                                <CriterionElement critName='Отзывчивость'/>
-                                <CriterionElement critName='Качество работы'/>
-                                <CriterionElement critName='Продуктивность'/>
+                                {currentCriterions}
                             </div>
 
-                            <AddCriterionElement/>
+                            <AddCriterionElement
+                                addCriterion={props.addCriterion}
+                                jwt={props.jwt}
+                            />
                         </div>
                     )
                 }
@@ -82,28 +148,19 @@ const CriterionsEditorComponent = props => {
         );
     };
 
+    let PositionElements = props.positions
+        .map((position, index) => (
+            <PositionElement
+                key={index}
+                positionName={position.positionName}
+                positions={props.positions}
+            />)
+        );
+
     return (
         <div className={classes.main_wrapper}>
             <div className={classes.left_column_wrapper}>
-                <PositionElement
-                    positionName='Директор'
-                />
-                <PositionElement
-                    positionName='Художник'
-                />
-                <PositionElement
-                    positionName='Разработчик'
-                />
-                <PositionElement
-                    positionName='Уборщик'
-                />
-                <PositionElement
-                    positionName='Тестировщик'
-                />
-                <PositionElement
-                    positionName='Повар'
-                />
-
+                {PositionElements}
             </div>
             <div>
                 <CriterionsEditor/>

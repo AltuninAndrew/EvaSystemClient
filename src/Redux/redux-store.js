@@ -4,11 +4,13 @@ import adminProfilePageReducer from "./Reducers/adminProfilePageReducer";
 import authReducer from "./Reducers/authReducer";
 import thunkMiddleware from "redux-thunk"
 import {reducer as formReducer} from "redux-form"
+import criterionsEditingPageReducer from "./Reducers/criterionsEditingPageReducer";
 
 let reducers = combineReducers({
     mainAdminPage: mainAdminPageReducer,
     auth:authReducer,
     profilePage:adminProfilePageReducer,
+    criterionsEditingPage:criterionsEditingPageReducer,
     form:formReducer,
 });
 

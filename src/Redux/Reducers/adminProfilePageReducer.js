@@ -124,7 +124,6 @@ const adminProfilePageReducer = (state = initialState, action) => {
                 interectedUsers: state.interectedUsers.filter(n => n.username !== action.data.username),
             };
         case DELETE_USER_FOR_INTERACT:
-
             return {
                 ...state,
                 usersForInteract: state.usersForInteract.filter(n => n.username !== action.data.username),

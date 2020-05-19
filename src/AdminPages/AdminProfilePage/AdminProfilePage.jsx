@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import classes from './AdminProfilePage.module.css';
+import styleFromMainAdminPage from '../MainAdminPage/MainAdminPage.module.css'
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import {makeStyles} from '@material-ui/core/styles';
@@ -11,6 +12,7 @@ import Avatar from '@material-ui/core/Avatar';
 import {withStyles} from "@material-ui/styles";
 import UserConnectionsEditComponent from "./UserEditConnectionsComponent/UserEditConntectionsComponent";
 import {Field, reduxForm, reset} from "redux-form";
+import {NavLink} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     paper_1: {
@@ -231,15 +233,26 @@ const AdminProfilePage = props => {
                             Рейтинг сотрудника
                         </div>
                         <Paper className={material_classes.paper_1}>
-                            {ratingElements}
+                            {ratingElements.length>0 ?
+                                (ratingElements) : (<h4 style={{textAlign: 'center'}}>Рейтинг отсутсвует</h4>)
+                            }
                         </Paper>
                     </Grid>
 
                     {/*правая колонка*/}
                     <Grid item xs={8}>
-                        <div className={classes.right_column_header}>
-                            Сотрудник
+                        <div className={styleFromMainAdminPage.right_column_header_wrapper}>
+                            <div className={styleFromMainAdminPage.user_list_header}>
+                                Сотрудник
+                            </div>
+
+                            <div className={styleFromMainAdminPage.to_criterions_page_btn_wrapper}>
+                                <NavLink to={'/admin'}>
+                                    <button>Сотрудники</button>
+                                </NavLink>
+                            </div>
                         </div>
+
                         <Paper className={material_classes.paper_2}>
                             <ProfileElement
                                 userFullName={`${props.lastName} ${props.firstName} ${props.middleName}`}

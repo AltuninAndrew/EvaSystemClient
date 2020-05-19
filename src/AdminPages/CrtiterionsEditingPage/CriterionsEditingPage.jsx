@@ -33,7 +33,13 @@ const CriterionsEditingPage = (props) => {
 
                 <Paper className={material_classes.paper}>
                     <div className={classes.criterions_block_wrapper}>
-                        <CriterionsEditorComponent/>
+                        <CriterionsEditorComponent
+                            positions={props.positions}
+                            addCriterion={props.addCriterion}
+                            jwt={props.jwt}
+                            isCritsChanged={props.isCritsChanged}
+                            offIsCritChange={props.offIsCritChange}
+                        />
                     </div>
                 </Paper>
             </Container>

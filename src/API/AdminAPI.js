@@ -118,3 +118,22 @@ export const deleteCommunicationBtwUsers = (username,jwt,interactedUserName) =>{
         data:{interactedUserName}
     });
 };
+
+export const getPositions = (jwt)=>{
+    return axios.get(`https://localhost:44337/api/Evaluation/get_all_positions`,{
+        headers: {
+            "accept": "*/*",
+            "Authorization": `bearer ${jwt}`,
+        }
+    });
+};
+
+export const addCriterions = (jwt,positionName,name,weight) =>{
+    return axios.post(`https://localhost:44337/api/Evaluation/add_criterions/?positionName=${positionName}`,[{name,weight}],{
+        headers: {
+            "accept": "*/*",
+            "Authorization": `bearer ${jwt}`,
+            "Content-Type": "application/json",
+        }
+    });
+}
