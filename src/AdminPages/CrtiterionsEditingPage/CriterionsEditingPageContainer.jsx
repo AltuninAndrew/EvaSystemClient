@@ -3,7 +3,7 @@ import React, {useEffect} from "react";
 import {Redirect} from "react-router-dom";
 import CriterionsEditingPage from "./CriterionsEditingPage";
 import {
-    addCriterionOnServer,
+    addCriterionOnServer, deleteCriterionOnServer,
     getPositionsFromServer, offIsCritChange,
 } from "../../Redux/Reducers/criterionsEditingPageReducer";
 
@@ -33,6 +33,7 @@ const CriterionsEditingPageContainerAPI = (props) =>{
         return <CriterionsEditingPage
             positions={props.positions}
             addCriterion={props.addCriterionOnServer}
+            deleteCriterion={props.deleteCriterionOnServer}
             jwt={props.jwt}
             isCritsChanged={props.isCritsChanged}
             offIsCritChange={props.offIsCritChange}
@@ -47,6 +48,7 @@ const CriterionsEditingPageContainer = connect(mapStateToProps, {
     getPositionsFromServer,
     addCriterionOnServer,
     offIsCritChange,
+    deleteCriterionOnServer,
 })(CriterionsEditingPageContainerAPI);
 
 export default CriterionsEditingPageContainer;

@@ -136,4 +136,15 @@ export const addCriterions = (jwt,positionName,name,weight) =>{
             "Content-Type": "application/json",
         }
     });
-}
+};
+
+export const deleteCriterions = (jwt,positionName,criterionName) =>{
+    return axios.delete(`https://localhost:44337/api/Evaluation/delete_criterions/${positionName}`,{
+        headers: {
+            "accept": "*/*",
+            "Authorization": `bearer ${jwt}`,
+            "Content-Type": "application/json",
+        },
+        data:{criterionsName:[criterionName]}
+    });
+};

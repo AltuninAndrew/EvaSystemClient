@@ -36,6 +36,7 @@ const CriterionsEditingPage = (props) => {
                         <CriterionsEditorComponent
                             positions={props.positions}
                             addCriterion={props.addCriterion}
+                            deleteCriterion={props.deleteCriterion}
                             jwt={props.jwt}
                             isCritsChanged={props.isCritsChanged}
                             offIsCritChange={props.offIsCritChange}

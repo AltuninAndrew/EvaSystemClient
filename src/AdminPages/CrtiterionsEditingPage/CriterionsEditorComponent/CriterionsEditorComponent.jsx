@@ -28,7 +28,7 @@ const AddCritForm = (props) =>{
                 validate={[required]}
             />
 
-            <button style={{background:"none",color:"#373B3A",padding:0,border:"none", outline:"none",width:0}}>
+            <button style={{background:"none",color:"#373B3A",padding:0,border:"none",cursor:"pointer", outline:"none",width:0}}>
                 <AddCircleIcon className={classes.add_crit_icon}/>
             </button>
         </form>
@@ -56,6 +56,9 @@ const CriterionsEditorComponent = props => {
                         key={index}
                         critName={crit.name}
                         critWeight={crit.weight}
+                        deleteCriterion={props.deleteCriterion}
+                        currentPosName={props.positionName}
+                        jwt={props.jwt}
                     />)
                 );
             setCurrentCriterions(crits);
@@ -71,11 +74,16 @@ const CriterionsEditorComponent = props => {
     };
 
     const CriterionElement = props => {
+
+        const onDeleteAction = ()=>{
+            props.deleteCriterion(props.jwt,props.currentPosName,props.critName);
+        };
+
         return (
             <div className={classes.criterion_element_wrapper}>
                 <div className={classes.criterion_name}>
                     {props.critName}
-                    <DeleteForeverRoundedIcon className={classes.delete_crit_icon}/>
+                    <DeleteForeverRoundedIcon className={classes.delete_crit_icon} onClick={onDeleteAction}/>
                 </div>
                 <input className={classes.input_weight} type="number" defaultValue={props.critWeight} disabled={true} step="1" min="1" max="5"/>
             </div>
@@ -105,13 +113,15 @@ const CriterionsEditorComponent = props => {
                             key={index}
                             critName={crit.name}
                             critWeight={crit.weight}
+                            deleteCriterion={props.deleteCriterion}
+                            currentPosName={currentPositionName}
+                            jwt={props.jwt}
                         />)
                     );
                 setCurrentCriterions(crits);
                 props.offIsCritChange();
             }
         });
-
 
 
         return (
@@ -154,6 +164,8 @@ const CriterionsEditorComponent = props => {
                 key={index}
                 positionName={position.positionName}
                 positions={props.positions}
+                deleteCriterion={props.deleteCriterion}
+                jwt={props.jwt}
             />)
         );
 

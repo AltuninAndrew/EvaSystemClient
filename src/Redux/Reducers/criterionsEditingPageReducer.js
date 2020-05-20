@@ -1,9 +1,9 @@
 import * as AdminAPI from "../../API/AdminAPI"
-import {dataKey} from "redux-form/lib/util/eventConsts";
 
 const SET_POSITIONS = "SET-POSITIONS";
 const ADD_CRITERION = "ADD-CRITERION";
 const OFF_IS_CHANGE = "OFF-IS-CHANGE";
+const DELETE_CRITERION = "DELETE-CRITERION";
 
 let initialState = {
     positions:[],
@@ -26,6 +26,15 @@ const criterionsEditingPageReducer = (state = initialState,action) =>{
                 positions:oldPos,
                 isCritsChanged:true,
             };
+        case DELETE_CRITERION:
+            let changedPos = state.positions;
+            let i = changedPos.findIndex(e=>e.positionName===action.data.posName);
+            changedPos[i].criterions = changedPos[i].criterions.filter(crit=>crit.name!==action.data.critName);
+            return {
+                ...state,
+                positions: changedPos,
+                isCritsChanged:true,
+            };
         case OFF_IS_CHANGE:
             return {
                 ...state,
@@ -38,6 +47,7 @@ const criterionsEditingPageReducer = (state = initialState,action) =>{
 
 const setPositions = (positions) =>({type:SET_POSITIONS, data:{positions}});
 const addCritToState = (posName,critName,critWeight) => ({type:ADD_CRITERION, data:{posName,critName,critWeight}});
+const deleteCritFromState = (posName,critName) =>({type:DELETE_CRITERION,data:{posName,critName}});
 const offIsChange = () =>({type:OFF_IS_CHANGE});
 
 export const getPositionsFromServer= (jwt) =>(dispatch)=>{
@@ -60,6 +70,20 @@ export const addCriterionOnServer = (jwt,positionName,criterionName,criterionWei
             }
         })
         .catch(error=>{
+            console.log(error);
+        })
+};
+
+export const deleteCriterionOnServer = (jwt,positionName,criterionName) => (dispatch)=>{
+    AdminAPI.deleteCriterions(jwt,positionName,criterionName)
+        .then(response=>{
+            if(response.data.success)
+            dispatch(deleteCritFromState(positionName,criterionName));
+        })
+        .catch(error=>{
+            if(error.response.data){
+                alert(error.response.data)
+            }
             console.log(error);
         })
 };
