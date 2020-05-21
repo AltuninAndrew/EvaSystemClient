@@ -67,7 +67,7 @@ const AdminProfilePageContainerAPI = (props) => {
             avatarImage={props.avatarImage}
             position={props.position}
             email={props.email}
-            currentRating={props.currentUserRating.currentRating}
+            currentRating={props.currentUserRating.commonRating}
             changeUserData={props.changeUserDataOnServer}
             jwt={props.jwt}
             username={props.match.params.userId}

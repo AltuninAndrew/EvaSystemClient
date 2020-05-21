@@ -87,12 +87,13 @@ export const me = () => (dispatch) =>{
 };
 
 export const login = (email,password) => (dispatch) =>{
-
     AuthAPI.loginOnServer(email,password)
         .then(response=>{
             if(response.data.success === true){
                 localStorage.setItem('userJWT',response.data.token);
                 dispatch(setAuthUserData(response.data.token,true,response.data.userRole,response.data.username));
+                dispatch(setUserInfo(response.data.userFirstName,response.data.userLastName,
+                    response.data.userMiddleName,response.data.userPosition,response.data.avatarImage));
             }
         })
         .catch(error => {
@@ -105,7 +106,6 @@ export const login = (email,password) => (dispatch) =>{
             }else {
                 dispatch(stopSubmit("login",{_error:"Сервер не отвечает"}));
             }
-
         });
 };
 

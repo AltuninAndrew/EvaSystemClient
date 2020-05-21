@@ -1,14 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from "./UserInfoComponent.module.css"
 import Avatar from "@material-ui/core/Avatar";
 
-const UserInfoComponent = props=>{
-    return(
+const UserInfoComponent = props => {
+
+    let [onAvatarFocus, setOnAvatarFocus] = useState(false);
+
+    const onAvatarEnter = () => {
+        setOnAvatarFocus(true);
+    };
+
+    const onAvatarLeave = () => {
+        setOnAvatarFocus(false);
+    };
+
+    return (
         <div className={classes.main_wrapper}>
-            <Avatar className={classes.avatar} src='https://avatars.mds.yandex.net/get-pdb/1058492/94e5b2e6-a03e-4655-97e9-3825bc701f05/s1200?webp=false'/>
+
+            <Avatar className={classes.avatar} src={`data:image/jpeg;base64,${props.avatarImage}`}
+                    onMouseEnter={onAvatarEnter}
+                    onMouseLeave={onAvatarLeave}
+            />
+
             <div className={classes.user_data}>
-                <div className={classes.user_full_name}>Ибатулин Михаил Петрович</div>
-                <div className={classes.user_position}>Разработчик</div>
+                <div className={classes.user_full_name}>{props.fullName}</div>
+                <div className={classes.user_position}>{props.position}</div>
             </div>
             <button className={classes.rate_button}>
                 Оценить коллег

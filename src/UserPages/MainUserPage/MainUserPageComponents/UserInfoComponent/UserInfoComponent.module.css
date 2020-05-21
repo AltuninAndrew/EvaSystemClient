@@ -13,6 +13,14 @@
 
 }
 
+.avatar:hover{
+    filter: brightness(85%)
+}
+
+.load_file_wrapper{
+ margin-top: -50pt;
+}
+
 .user_data{
     display: block;
     margin-left: auto;

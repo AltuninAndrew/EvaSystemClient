@@ -30,21 +30,25 @@ const MainUserPage = props => {
                     {/*левая колонка*/}
                     <Grid item xs={4}>
                         <Paper className={material_classes.paper_1}>
-                            <FellowsComponent/>
+                            <FellowsComponent interactedUsers = {props.interactedUsers}/>
                         </Paper>
                     </Grid>
 
                     {/*средняя колонка*/}
                     <Grid item xs={4}>
                         <Paper className={material_classes.paper_2}>
-                            <UserInfoComponent/>
+                            <UserInfoComponent
+                                fullName={props.fullName}
+                                position={props.position}
+                                avatarImage={props.avatarImage}
+                            />
                         </Paper>
                     </Grid>
 
                     {/*правая колонка*/}
                     <Grid item xs={4}>
                         <Paper className={material_classes.paper_1}>
-                           <UserStatisticsComponent/>
+                           <UserStatisticsComponent userRating = {props.userRating}/>
                         </Paper>
                     </Grid>
                 </Grid>

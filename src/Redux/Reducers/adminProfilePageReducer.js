@@ -30,7 +30,7 @@ let initialState = {
         avatarImage: undefined,
     },
     currentUserRating: {
-        currentRating: "",
+        commonRating: "",
         scorePerCriterion: [],
     },
     interectedUsers: [],
