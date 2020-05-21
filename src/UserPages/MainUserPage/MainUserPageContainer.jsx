@@ -2,6 +2,7 @@ import {connect} from "react-redux";
 import MainUserPage from "./MainUserPage"
 import React, {useEffect} from "react";
 import {getInteractedUsersFromServer, getUserRatingFromServer} from "../../Redux/Reducers/mainUserPageReducer";
+import {addAvatarImageOnServer} from "../../Redux/Reducers/authReducer";
 
 let mapStateToProps = (state) => {
     return {
@@ -34,12 +35,14 @@ const MainUserPageContainerAPI = (props) => {
         avatarImage={props.avatarImage}
         interactedUsers={props.interactedUsers}
         userRating={props.userRating}
+        addAvatarImage={props.addAvatarImageOnServer}
     />
 };
 
 const MainUserPageContainer = connect(mapStateToProps, {
     getUserRatingFromServer,
-    getInteractedUsersFromServer
+    getInteractedUsersFromServer,
+    addAvatarImageOnServer,
 })(MainUserPageContainerAPI);
 
 export default MainUserPageContainer;

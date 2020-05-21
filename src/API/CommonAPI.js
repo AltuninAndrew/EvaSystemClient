@@ -17,3 +17,15 @@ export const getInterectedUsers = (username,jwt) =>{
         }
     });
 };
+
+export const addUserAvatar = (jwt,username,file) =>{
+    const formData = new FormData();
+    formData.append("userAvatarImage",file);
+    return axios.post(`https://localhost:44337/api/ClientData/add_user_avatar/${username}`,formData,{
+        headers: {
+            "accept": "*/*",
+            "Authorization": `bearer ${jwt}`,
+            "Content-Type": "multipart/form-data",
+        }
+    });
+};

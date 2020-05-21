@@ -1,8 +1,10 @@
 import * as AuthAPI from "../../API/AuthAPI";
+import * as CommonAPI from "../../API/CommonAPI";
 import {stopSubmit} from "redux-form";
 
 const SET_AUTH_USER_DATA = "SET-AUTH-DATA";
 const SET_USER_INFO = "SET-USER-INFO";
+const SET_USER_AVATAR = "SET-USER-AVATAR";
 const REMOVE_USER = "REMOVE-USER";
 
 let jwtFromStorage = localStorage.getItem("userJWT");
@@ -40,6 +42,14 @@ const authReducer = (state = initialState,action) =>{
                 ...initialState,
                 JWT:""
             };
+        case SET_USER_AVATAR:
+            return {
+                ...state,
+                userInfo: {
+                    ...state.userInfo,
+                    avatarImage:action.data,
+                }
+            };
         default:
             return state;
     }
@@ -50,6 +60,8 @@ export const setAuthUserData = (JWT,isAuth,role,username) => ({type:SET_AUTH_USE
 export const setUserInfo = (firstName,lastName,middleName,position,avatarImage) => (
     {type:SET_USER_INFO,data:{firstName,lastName,middleName,position,avatarImage}}
     );
+
+export const setUserAvatar = (avatarImage) =>({type:SET_USER_AVATAR,data:avatarImage});
 
 export const deleteUserFromState = ()=> ({type:REMOVE_USER});
 
@@ -107,6 +119,23 @@ export const login = (email,password) => (dispatch) =>{
                 dispatch(stopSubmit("login",{_error:"Сервер не отвечает"}));
             }
         });
+};
+
+export const addAvatarImageOnServer = (file) =>(dispatch,getState)=>{
+    let jwt = getState().auth.JWT;
+    let username = getState().auth.username;
+    CommonAPI.addUserAvatar(jwt,username,file)
+        .then(response=>{
+            if(response.data.success === true){
+                dispatch(setUserAvatar(response.data.newAvatarImage))
+            }
+        })
+        .catch(error=>{
+            if(error.response.data){
+                alert("Изображение слишком большое или не удовлетворяет условиям системы");
+            }
+            console.log(error);
+        })
 };
 
 export default authReducer;
