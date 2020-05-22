@@ -1,7 +1,7 @@
 import * as axios from "axios";
 
 export const getUsers = (jwt)=>{
-    return axios.get("https://localhost:44337/api/identity/get_all_users", {
+    return axios.get("https://evasystemstankin.azurewebsites.net/api/identity/get_all_users", {
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -12,7 +12,7 @@ export const getUsers = (jwt)=>{
 };
 
 export const regUser = (jwt,email,password,firstName,middleName,lastName,position) => {
-    return axios.post("https://localhost:44337/api/identity/client_register", {email, password,firstName,middleName,lastName,position},{
+    return axios.post("https://evasystemstankin.azurewebsites.net/api/identity/client_register", {email, password,firstName,middleName,lastName,position},{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -22,7 +22,7 @@ export const regUser = (jwt,email,password,firstName,middleName,lastName,positio
 };
 
 export const deleteUser = (username,jwt) =>{
-   return axios.delete(`https://localhost:44337/api/ClientData/delete_user/${username}`,{
+   return axios.delete(`https://evasystemstankin.azurewebsites.net/api/ClientData/delete_user/${username}`,{
        headers: {
            "accept": "*/*",
            "Authorization": `bearer ${jwt}`,
@@ -31,7 +31,7 @@ export const deleteUser = (username,jwt) =>{
 };
 
 export const changeUserFirstName = (username,jwt,newFirstName) =>{
-    return axios.put(`https://localhost:44337/api/ClientData/change_first_name/${username}`,{newFirstName},{
+    return axios.put(`https://evasystemstankin.azurewebsites.net/api/ClientData/change_first_name/${username}`,{newFirstName},{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -41,7 +41,7 @@ export const changeUserFirstName = (username,jwt,newFirstName) =>{
 };
 
 export const changeUserMiddleName = (username,jwt,newMiddleName) =>{
-    return axios.put(`https://localhost:44337/api/ClientData/change_middle_name/${username}`, {newMiddleName},{
+    return axios.put(`https://evasystemstankin.azurewebsites.net/api/ClientData/change_middle_name/${username}`, {newMiddleName},{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -51,7 +51,7 @@ export const changeUserMiddleName = (username,jwt,newMiddleName) =>{
 };
 
 export const changeUserLastName = (username,jwt,newLastName) =>{
-    return axios.put(`https://localhost:44337/api/ClientData/change_last_name/${username}`, {newLastName},{
+    return axios.put(`https://evasystemstankin.azurewebsites.net/api/ClientData/change_last_name/${username}`, {newLastName},{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -61,7 +61,7 @@ export const changeUserLastName = (username,jwt,newLastName) =>{
 };
 
 export const changeUserEmail = (username,jwt,newEmail) =>{
-    return axios.put(`https://localhost:44337/api/ClientData/change_email/${username}`, {newEmail},{
+    return axios.put(`https://evasystemstankin.azurewebsites.net/api/ClientData/change_email/${username}`, {newEmail},{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -71,7 +71,7 @@ export const changeUserEmail = (username,jwt,newEmail) =>{
 };
 
 export const changeUserPosition = (username,jwt,newPosition) =>{
-    return axios.put(`https://localhost:44337/api/ClientData/change_position/${username}`,{newPosition},{
+    return axios.put(`https://evasystemstankin.azurewebsites.net/api/ClientData/change_position/${username}`,{newPosition},{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -81,7 +81,7 @@ export const changeUserPosition = (username,jwt,newPosition) =>{
 };
 
 export const changeUserPassword = (username,jwt,oldPassword,newPassword) =>{
-    return axios.put(`https://localhost:44337/api/ClientData/change_password/${username}`,{oldPassword,newPassword},{
+    return axios.put(`https://evasystemstankin.azurewebsites.net/api/ClientData/change_password/${username}`,{oldPassword,newPassword},{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -91,7 +91,7 @@ export const changeUserPassword = (username,jwt,oldPassword,newPassword) =>{
 };
 
 export const getUsersForInteract = (username,jwt,) => {
-    return axios.get(`https://localhost:44337/api/ClientData/get_users_for_interact/${username}`,{
+    return axios.get(`https://evasystemstankin.azurewebsites.net/api/ClientData/get_users_for_interact/${username}`,{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -100,7 +100,7 @@ export const getUsersForInteract = (username,jwt,) => {
 };
 
 export const addCommunicationBtwUsers = (username,jwt,interectedUsersName) =>{
-    return axios.post(`https://localhost:44337/api/ClientData/add_interected_users/${username}`, interectedUsersName,{
+    return axios.post(`https://evasystemstankin.azurewebsites.net/api/ClientData/add_interected_users/${username}`, interectedUsersName,{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -110,7 +110,7 @@ export const addCommunicationBtwUsers = (username,jwt,interectedUsersName) =>{
 };
 
 export const deleteCommunicationBtwUsers = (username,jwt,interactedUserName) =>{
-    return axios.delete(`https://localhost:44337/api/ClientData/delete_interected_users/${username}`,{
+    return axios.delete(`https://evasystemstankin.azurewebsites.net/api/ClientData/delete_interected_users/${username}`,{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -120,7 +120,7 @@ export const deleteCommunicationBtwUsers = (username,jwt,interactedUserName) =>{
 };
 
 export const getPositions = (jwt)=>{
-    return axios.get(`https://localhost:44337/api/Evaluation/get_all_positions`,{
+    return axios.get(`https://evasystemstankin.azurewebsites.net/api/Evaluation/get_all_positions`,{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -129,7 +129,7 @@ export const getPositions = (jwt)=>{
 };
 
 export const addCriterions = (jwt,positionName,name,weight) =>{
-    return axios.post(`https://localhost:44337/api/Evaluation/add_criterions/?positionName=${positionName}`,[{name,weight}],{
+    return axios.post(`https://evasystemstankin.azurewebsites.net/api/Evaluation/add_criterions/?positionName=${positionName}`,[{name,weight}],{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
@@ -139,7 +139,7 @@ export const addCriterions = (jwt,positionName,name,weight) =>{
 };
 
 export const deleteCriterions = (jwt,positionName,criterionName) =>{
-    return axios.delete(`https://localhost:44337/api/Evaluation/delete_criterions/${positionName}`,{
+    return axios.delete(`https://evasystemstankin.azurewebsites.net/api/Evaluation/delete_criterions/${positionName}`,{
         headers: {
             "accept": "*/*",
             "Authorization": `bearer ${jwt}`,
