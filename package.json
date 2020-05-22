@@ -2,6 +2,7 @@
   "name": "eva-client-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://eva-system.azurewebsites.net",
   "dependencies": {
     "@material-ui/core": "^4.9.10",
     "@material-ui/icons": "^4.9.1",
