@@ -1,0 +1,39 @@
+.main_wrapper{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 10pt;
+    grid-column-gap: 10pt;
+}
+
+
+.avatar{
+    display: block;
+    width: calc(35pt + 8vw) !important;
+    height: calc(35pt + 8vw) !important;
+    margin: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+.info_wrapper{
+    font-family: Segoe UI,Arial,sans-serif;
+    padding: 5pt;
+}
+
+.full_name_txt{
+    font-size: calc(12pt + 0.5vw);
+    margin-bottom: 9pt;
+    text-align: right;
+}
+
+.position_txt{
+    font-size: calc(10pt + 0.5vw);
+    font-weight: lighter;
+    margin-bottom: 5pt;
+    text-align: right;
+}
+
+.email_txt{
+    font-size: calc(10pt + 0.4vw);
+    font-weight: lighter;
+    text-align: right;
+}

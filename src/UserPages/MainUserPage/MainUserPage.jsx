@@ -7,7 +7,6 @@ import {makeStyles} from "@material-ui/core/styles";
 import FellowsComponent from "./MainUserPageComponents/FellowsComponent/FellowsComponent";
 import UserInfoComponent from "./MainUserPageComponents/UserInfoComponent/UserInfoComponent";
 import UserStatisticsComponent from "./MainUserPageComponents/UserStatisticsComponent/UserStatisticsComponent";
-import {addAvatarImageOnServer} from "../../Redux/Reducers/authReducer";
 
 const useStyles = makeStyles((theme) => ({
     paper_1: {

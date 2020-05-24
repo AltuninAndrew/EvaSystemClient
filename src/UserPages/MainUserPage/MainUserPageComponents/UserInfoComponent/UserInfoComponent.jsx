@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import classes from "./UserInfoComponent.module.css"
 import Avatar from "@material-ui/core/Avatar";
-import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
 
 
 const UserInfoComponent = props => {

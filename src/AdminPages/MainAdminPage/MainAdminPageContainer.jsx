@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import MainAdminPage from "./MainAdminPage";
 import {getUsersFromServer, regNewUserInServer} from "../../Redux/Reducers/mainAdminPageReducer";
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {Redirect} from "react-router-dom";
 
 let mapStateToProps = (state) =>{

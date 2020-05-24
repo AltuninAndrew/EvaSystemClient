@@ -3,7 +3,6 @@ import classes from './CritertionsEditorComponent.module.css';
 import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import {Field, reset, reduxForm} from "redux-form";
-import {addCriterions} from "../../../API/AdminAPI";
 import {required} from "../../../Validators/validators";
 
 

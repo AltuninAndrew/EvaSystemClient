@@ -1,0 +1,23 @@
+.main_block {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: calc(9pt + 7vh);
+    display: grid;
+    grid-template-rows: 1fr 12fr;
+    grid-row-gap: 7pt;
+    padding: 10pt;
+}
+
+.paper_1 {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-family: Segoe UI, Arial, sans-serif;
+    font-size: calc(10pt + 0.3vw);
+    padding: 12pt;
+}
+
+.paper_2 {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    height: 95%
+}

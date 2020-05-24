@@ -1,0 +1,30 @@
+.main_wrapper {
+    border-top: 1pt solid grey;
+}
+
+.criterions_wrapper{
+    padding: 5pt;
+}
+
+.crit_element_wrapper {
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    padding: 7pt;
+    border: 1pt solid black;
+    margin-bottom: 8pt;
+    box-shadow: 0 1.5pt 2pt rgba(0, 0, 0, .2);
+}
+
+.crit_name_txt{
+    font-size: calc(8pt + 0.5vw);
+    font-family: Segoe UI,Arial,sans-serif;
+}
+
+.input_score{
+    font-size: calc(9pt + 0.2vw);
+    font-family: "Segoe UI","Arial",sans-serif;
+    width: 65%;
+    font-weight: bold;
+    padding: 2pt;
+    text-align: center;
+}
