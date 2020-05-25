@@ -1,14 +1,15 @@
-import * as axios from "axios";
 import * as CommonAPI from "../../API/CommonAPI";
 
 const SET_INTERACTED_USERS = "SET-INTERACTED-USERS";
 const UPDATE_CURR_EVALUATE_USER_INDEX = "SET-CURR-EVALUATE-USER-INDEX";
+const SET_IS_FETCHING = "SET-IS-FETCHING";
 
 let initialState = {
     allInteractedUsers:[],
-    currentEvaluateUserIndex:-1,
+    currentEvaluateUserIndex:0,
     numOfUsers:0,
     finished:false,
+    isFetching:false,
 };
 
 const evaluationUserPageReducer = (state=initialState, action) =>{
@@ -32,6 +33,11 @@ const evaluationUserPageReducer = (state=initialState, action) =>{
                     currentEvaluateUserIndex: currIndex,
                 };
             }
+        case SET_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.data,
+            };
         default:
             return state;
     }
@@ -41,11 +47,12 @@ const setInteractedUsers = (users) => ({type: SET_INTERACTED_USERS, data: users}
 
 const updateCurrentEvaluateUserIndex = () => ({type: UPDATE_CURR_EVALUATE_USER_INDEX});
 
+const setIsFetching =(flag)=>({type:SET_IS_FETCHING,data:flag});
+
 export const getInteractedUsersWithCritsFromServer = (username,jwt)=>(dispatch)=>{
     CommonAPI.getInteractedUsersWithCrits(username,jwt)
         .then(response=>{
             dispatch(setInteractedUsers(response.data));
-            dispatch(updateCurrentEvaluateUserIndex());
         })
         .catch(error=>{
             if(error.response.data){
@@ -53,7 +60,7 @@ export const getInteractedUsersWithCritsFromServer = (username,jwt)=>(dispatch)=
             }else {
                 console.log(error);
             }
-        })
+        });
 };
 
 export const rateUserOnServer = (username,jwt,estimations) => (dispatch)=>{

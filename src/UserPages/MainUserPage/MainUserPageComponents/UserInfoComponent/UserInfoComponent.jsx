@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import classes from "./UserInfoComponent.module.css"
 import Avatar from "@material-ui/core/Avatar";
+import {NavLink} from "react-router-dom";
 
 
 const UserInfoComponent = props => {
@@ -48,9 +49,12 @@ const UserInfoComponent = props => {
                 <div className={classes.user_full_name}>{props.fullName}</div>
                 <div className={classes.user_position}>{props.position}</div>
             </div>
-            <button className={classes.rate_button}>
-                Оценить коллег
-            </button>
+            <NavLink to={"/user/evaluation"}>
+                <button className={classes.rate_button}>
+                    Оценить коллег
+                </button>
+            </NavLink>
+
         </div>
     );
 };

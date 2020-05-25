@@ -9,15 +9,15 @@ const FellowInfoComponent = (props) => {
 
             <div className={classes.info_wrapper}>
                 <div className={classes.full_name_txt}>
-                    Петров Владимир Владимирович
+                    {props.fullName}
                 </div>
 
                 <div className={classes.position_txt}>
-                    Главный бухгалтер
+                    {props.position}
                 </div>
 
                 <div className={classes.email_txt}>
-                    user@example.com
+                    {props.email}
                 </div>
 
             </div>

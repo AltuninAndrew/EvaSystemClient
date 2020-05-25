@@ -1,10 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from "./EvaluationFormComponent.module.css";
 import {Field, reduxForm, reset} from "redux-form";
 import {required} from "../../../Validators/validators";
 import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 
-let criterions = ["Качество работы", "Ловкость","Чутьё","Желание жить", "Продуктивность","Чутьё","Желание жить", "Продуктивность"];
 
 const CriterionElement = (props) => {
     return (
@@ -26,42 +25,46 @@ const CriterionElement = (props) => {
     );
 };
 
-const EvaluationForm = (props) =>{
-    let criterionElements = criterions.map((crit, index) => (<CriterionElement name={crit} key={index}/>));
-    return(
-        <form onSubmit={props.handleSubmit}>
-            <div className={classes.main_wrapper}>
-                <div className={classes.criterions_wrapper}>
-                    {criterionElements}
+
+const EvaluationFormComponent = (props) => {
+
+    let [criterions,setCriterions] = useState([]);
+
+    useEffect(() => {
+       setCriterions(props.criterions);
+       console.log("asd");
+    },[props.criterions]);
+
+    const EvaluationForm = (props) =>{
+        let criterionElements = criterions.map((crit, index) => (<CriterionElement name={crit} key={index}/>));
+        return(
+            <form onSubmit={props.handleSubmit}>
+                <div className={classes.main_wrapper}>
+                    <div className={classes.criterions_wrapper}>
+                        {criterionElements}
+                    </div>
+                    <div>
+                        <button className={classes.next_btn}><ArrowForwardRoundedIcon/></button>
+                    </div>
                 </div>
-                <div>
-                    <button className={classes.next_btn}><ArrowForwardRoundedIcon/></button>
-                </div>
-            </div>
-        </form>
-    );
-};
+            </form>
+        );
+    };
 
-const afterSubmit = (result, dispatch) =>{
+    const EvaluationReduxForm = reduxForm({form: 'rateForm'})(EvaluationForm);
 
-};
-
-const EvaluationReduxForm = reduxForm({form: 'rateForm', onSubmitSuccess: afterSubmit})(EvaluationForm);
-
-
-const EvaluationFormComponent = () => {
     const onSubmitForm = (formData) => {
         let raw = JSON.stringify(formData).split(/"(.*?)"/).filter(e=>e!=="{" && e!=="}" && e!=="," && e!==":");
         let objs=[];
         for(let i =0; i<raw.length;i++){
             if(i%2===0) {
                 objs.push({
-                    name:raw[i],
-                    score:raw[i+1],
+                    criterionName:raw[i],
+                    score:parseInt(raw[i+1]),
                 })
             }
         }
-        console.log(objs);
+        props.rateUser(props.evaUserName,props.jwt,objs);
     };
 
     return (

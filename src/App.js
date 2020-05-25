@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 import {deleteUserFromState, me} from "./Redux/Reducers/authReducer";
 import MainUserPageContainer from "./UserPages/MainUserPage/MainUserPageContainer";
 import CriterionsEditingPageContainer from "./AdminPages/CrtiterionsEditingPage/CriterionsEditingPageContainer";
-import EvaluationUserPage from "./UserPages/EvaluationUserPage/EvaluationUserPage";
+import EvaluationUserPageContainer from "./UserPages/EvaluationUserPage/EvaluationUserPageContainer";
 
 const Redirector = (props) =>{
     if(props.isAuth===false){
@@ -49,7 +49,7 @@ const App = (props) => {
             <Route exact path='/admin/profile_page/:userId' render={()=><AdminProfilePageContainer/>}/>
             <Route exact path='/admin/criterions' component={CriterionsEditingPageContainer}/>
             <Route exact path={'/user'} render={() => <MainUserPageContainer/>}/>
-            <Route exact path={'/user/evaluation'} render={() => <EvaluationUserPage/>}/>
+            <Route exact path={'/user/evaluation'} render={() => <EvaluationUserPageContainer/>}/>
         </div>
     );
 };

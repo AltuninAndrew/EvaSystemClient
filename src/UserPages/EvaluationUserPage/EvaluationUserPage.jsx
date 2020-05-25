@@ -11,12 +11,22 @@ const EvaluationUserPage = props => {
         <div className={mainClasses.background}>
             <div className={classes.main_block}>
                <div className={classes.paper_1}>
-                   Осталось сотрудников: 1
+                   Осталось сотрудников: {props.numOfUsers}
                </div>
 
                <div className={classes.paper_2}>
-                    <FellowInfoComponent/>
-                    <EvaluationFormComponent/>
+                    <FellowInfoComponent
+                        fullName={props.fullName}
+                        position={props.position}
+                        email={props.email}
+                        avatarImage={props.avatarImage}
+                    />
+                    <EvaluationFormComponent
+                        criterions={props.criterions}
+                        rateUser={props.rateUser}
+                        jwt={props.jwt}
+                        evaUserName={props.evaUserName}
+                    />
                </div>
 
             </div>
