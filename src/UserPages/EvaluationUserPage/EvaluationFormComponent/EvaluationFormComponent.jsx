@@ -2,8 +2,9 @@ import React from 'react';
 import classes from "./EvaluationFormComponent.module.css";
 import {Field, reduxForm, reset} from "redux-form";
 import {required} from "../../../Validators/validators";
+import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 
-let criterions = ["Качество работы", "Ловкость","Чутьё"];
+let criterions = ["Качество работы", "Ловкость","Чутьё","Желание жить", "Продуктивность","Чутьё","Желание жить", "Продуктивность"];
 
 const CriterionElement = (props) => {
     return (
@@ -34,7 +35,7 @@ const EvaluationForm = (props) =>{
                     {criterionElements}
                 </div>
                 <div>
-                    <button>Следующий</button>
+                    <button className={classes.next_btn}><ArrowForwardRoundedIcon/></button>
                 </div>
             </div>
         </form>
@@ -45,7 +46,7 @@ const afterSubmit = (result, dispatch) =>{
 
 };
 
-const EvaluationReduxForm = reduxForm({form: 'addCriterion', onSubmitSuccess: afterSubmit})(EvaluationForm);
+const EvaluationReduxForm = reduxForm({form: 'rateForm', onSubmitSuccess: afterSubmit})(EvaluationForm);
 
 
 const EvaluationFormComponent = () => {

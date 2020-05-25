@@ -3,10 +3,18 @@
 }
 
 .criterions_wrapper{
+    display: block;
     padding: 5pt;
+    overflow: auto;
+    height: 350px;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+    margin-bottom: 1vw
 }
+.criterions_wrapper::-webkit-scrollbar { width: 0; }
 
 .crit_element_wrapper {
+    background-color: white;
     display: grid;
     grid-template-columns: 9fr 1fr;
     padding: 7pt;
@@ -27,4 +35,11 @@
     font-weight: bold;
     padding: 2pt;
     text-align: center;
+}
+
+
+.next_btn{
+    display: block;
+    margin: auto;
+    width: 10%;
 }
