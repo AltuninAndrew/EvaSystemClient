@@ -6,18 +6,21 @@
     margin-left: 80pt;
 }
 
+.pos_and_email_wrapper{
+    display: grid;
+    margin-top: 5pt;
+    grid-template-columns: 2fr 2fr;
+    margin-left: 80pt;
+}
+
 .text_posInfo{
     color: black;
     font-size: 13pt;
-    margin-left: 80pt;
-    margin-top: 4pt;
 }
 
 .text_emailInfo{
     color: black;
     font-size: 12pt;
-    margin-top: -15.9pt;
-    margin-left: 90pt;
 }
 
 .user_avatar{
@@ -46,6 +49,7 @@
 
 .link_to_profile{
     color: black;
+    text-decoration: none;
 }
 
 .main_wrapper{
@@ -55,6 +59,7 @@
     height: 55pt;
     margin-top: 10pt;
     width: 95%;
+    text-decoration: none !important;
 }
 
 .main_wrapper:hover {

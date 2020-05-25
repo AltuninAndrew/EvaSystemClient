@@ -16,23 +16,20 @@ const useStyles = makeStyles((theme) => ({
 const UserInListComponent = props => {
     const materialClasses = useStyles();
     return(
+        <NavLink to={`/admin/profile_page/`+props.userId} className={classes.link_to_profile}>
         <div className={classes.main_wrapper}>
             <Avatar variant="square" src={`data:image/jpeg;base64,${props.avatarImage}`} className={materialClasses.avatar} />
             <div className={classes.text_userName}>
                 {props.userName}
             </div>
-            <div className={classes.text_posInfo}>
+            <div className={classes.pos_and_email_wrapper}>
                 {props.position}
                 <div className={classes.text_emailInfo}>
                     {props.email}
                 </div>
             </div>
-            <div className={classes.block_info_icon}>
-                <NavLink to={`/admin/profile_page/`+props.userId} className={classes.link_to_profile}>
-                    <InfoIcon fontSize="default" className={classes.info_icon}/>
-                </NavLink>
-            </div>
         </div>
+        </NavLink>
     );
 };
 

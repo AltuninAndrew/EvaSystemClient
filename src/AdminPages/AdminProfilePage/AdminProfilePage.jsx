@@ -5,7 +5,6 @@ import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import {Rating} from '@material-ui/lab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box'
 import Avatar from '@material-ui/core/Avatar';
@@ -13,6 +12,9 @@ import {withStyles} from "@material-ui/styles";
 import UserConnectionsEditComponent from "./UserEditConnectionsComponent/UserEditConntectionsComponent";
 import {Field, reduxForm, reset} from "redux-form";
 import {NavLink} from "react-router-dom";
+import LinearProgress from '@material-ui/core/LinearProgress';
+
+const MAX_RATING = 10;
 
 const useStyles = makeStyles((theme) => ({
     paper_1: {
@@ -31,11 +33,16 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const StyledRating = withStyles({
-    iconFilled: {
-        color: '#ffc000',
+const BorderLinearProgress = withStyles({
+    root: {
+        height: 15,
+        backgroundColor: '#373B3A'
     },
-})(Rating);
+    bar: {
+        backgroundColor: '#F2AE30',
+    },
+})(LinearProgress);
+
 
 const ProfileElement = props => {
     const materialClasses = useStyles();
@@ -53,11 +60,12 @@ const ProfileElement = props => {
 };
 
 const RatingElement = props => {
+    let value = (props.currValue*100)/MAX_RATING;
     return (
         <div>
             <Box component="fieldset" mb={2} mt={2} display="flex" borderColor="primary">
                 <Typography component="legend">{props.title}</Typography>
-                <StyledRating value={props.currValue} precision={0.5} max={10} readOnly/>
+                <BorderLinearProgress variant="determinate" value={value}/>
             </Box>
         </div>
     );
