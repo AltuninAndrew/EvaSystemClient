@@ -18,6 +18,25 @@ export const getInterectedUsers = (username,jwt) =>{
     });
 };
 
+export const getInteractedUsersWithCrits = (username,jwt) =>{
+    return axios.get(`https://evasystemstankin.azurewebsites.net/api/ClientData/get_interacted_users_with_crits/${username}`,{
+        headers: {
+            "accept": "*/*",
+            "Authorization": `bearer ${jwt}`,
+        }
+    });
+};
+
+export const rateUser = (username,jwt,estimations) =>{
+    return axios.post(`https://evasystemstankin.azurewebsites.net/api/Evaluation/rate_user/${username}`,estimations,{
+        headers: {
+            "accept": "*/*",
+            "Authorization": `bearer ${jwt}`,
+            "Content-Type": "application/json",
+        }
+    });
+};
+
 export const addUserAvatar = (jwt,username,file) =>{
     const formData = new FormData();
     formData.append("userAvatarImage",file);

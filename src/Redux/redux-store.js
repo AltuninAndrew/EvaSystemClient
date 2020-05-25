@@ -6,6 +6,7 @@ import thunkMiddleware from "redux-thunk"
 import {reducer as formReducer} from "redux-form"
 import criterionsEditingPageReducer from "./Reducers/criterionsEditingPageReducer";
 import mainUserPageReducer from "./Reducers/mainUserPageReducer";
+import evaluationUserPageReducer from "./Reducers/evaluationUserPageReducer";
 
 let reducers = combineReducers({
     mainAdminPage: mainAdminPageReducer,
@@ -13,6 +14,7 @@ let reducers = combineReducers({
     profilePage:adminProfilePageReducer,
     criterionsEditingPage:criterionsEditingPageReducer,
     mainUserPage:mainUserPageReducer,
+    evaluationUserPage:evaluationUserPageReducer,
     form:formReducer,
 });
 
